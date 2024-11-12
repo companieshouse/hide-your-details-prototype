@@ -1,0 +1,98 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Applicant status
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorApplicantStatus %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorApplicantStatus %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="applicantStatus-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is your role for BIG SHOP LTD?
+            </h1>
+          </legend>
+          <div id="applicantStatus-hint" class="govuk-hint">
+            ...
+          </div>
+          <!-- Check for error -->
+          {% if errorApplicantStatus %}
+          <p id="applicantStatus-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select your role
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus" name="applicantStatus" type="radio" value="director">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus">
+                Director or secretary
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus-2" name="applicantStatus" type="radio" value="member">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus-2">
+                Member
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus-3" name="applicantStatus" type="radio" value="partner">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus-3">
+                Partner
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus-4" name="applicantStatus" type="radio" value="psc">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus-4">
+                Person with significant control (PSC)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus-5" name="applicantStatus" type="radio" value="shareholder">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus-5">
+                Shareholder
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus-6" name="applicantStatus" type="radio" value="not-active">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus-6">
+                No longer active
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

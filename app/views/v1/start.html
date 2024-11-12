@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+ {{ serviceName }} – GOV.UK Prototype Kite
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Hide your details</h1>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim 
+        ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+
+      <h2 class="govuk-heading-m">Lorem ipsum dolor sit amet</h2>
+      
+      <p class="govuk-body">Ut enim 
+        ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Lorem ipsum dolor</li>
+        <li>consectetur adipiscing elit</li>
+        <li>sed do eiusmod tempor incididunt</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Lorem ipsum dolor sit amet</h2>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim 
+        ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+
+      <h2 class="govuk-heading-m">Lorem ipsum dolor sit amet</h2>
+
+      <p class="govuk-body">Ut enim 
+        ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Lorem ipsum dolor</li>
+        <li>consectetur adipiscing elit</li>
+        <li>sed do eiusmod tempor incididunt</li>
+      </ul>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, 
+        consectetur adipiscing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim 
+        ad minim veniam, quis nostrud exercitation ullamco 
+        laboris nisi ut aliquip ex ea commodo consequat.
+      </p>
+
+      {{ govukButton({
+        text: "Start",
+        href: "sign-in",
+        isStartButton: true
+      }) }}
+
+    </div>
+  </div>
+{% endblock %}

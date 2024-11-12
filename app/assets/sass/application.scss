@@ -4,3 +4,16 @@
 // 
 
 // Add extra styles here
+.account-banner {
+    text-align: right;
+    font-size: 16px;
+    font-family: 'proxima_nova', Arial, sans-serif;
+    font-weight: 400;
+    text-transform: none;
+    z-index: 60;
+    clear: none;
+    background: transparent;
+    border-bottom: 1px solid #bfc1c3;
+    vertical-align: middle;
+    padding-bottom: 20px;
+}

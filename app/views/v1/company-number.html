@@ -1,0 +1,61 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the company number? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- Check for error -->
+      {% if errorCompanyNumber %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+
+      <form action="{{currentUrl}}" method="post">
+
+        <!-- Check for error -->
+        {% if errorCompanyNumber %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+          <div class="govuk-form-group">
+        {% endif %} 
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="companyNumber">
+              What is the company number?
+            </label>
+          </h1>
+          <div id="companyNumber-hint" class="govuk-hint">
+            The 8-character reference issued by Companies House when the company was set up
+          </div>
+          <!-- Check for error -->
+          {% if errorCompanyNumber %}
+          <p id="emailAddress-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter the company number
+          </p>
+          {% endif %} 
+          <input class="govuk-input govuk-input--width-10" id="companyNumber" name="companyNumber" type="text" aria-describedby="event-name-hint">
+        </div>      
+
+        {{ govukDetails({
+          summaryText: "Help with company number",
+          html: 'Use the <a class="govuk-link" href="https://find-and-update.company-information.service.gov.uk/">Companies House service</a> to find it.'
+        }) }}
+              
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

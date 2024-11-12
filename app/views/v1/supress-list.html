@@ -1,0 +1,71 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What do you want to supress – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- Check for error -->
+      {% if errorSuppressList %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+
+      <form action="{{currentUrl}}" method="post">    
+
+        <!-- Check for error -->
+        {% if errorSuppressList %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+          <div class="govuk-form-group">
+        {% endif %} 
+          <fieldset class="govuk-fieldset" aria-describedby="supressList-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What do you want to suppress?
+              </h1>
+            </legend>
+            <div id="supressList-hint" class="govuk-hint">
+              Select all that apply
+            </div>
+                      <!-- Check for error -->
+          {% if errorSuppressList %}
+          <p id="supressList-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select everything you want to suppress
+          </p>
+          {% endif %} 
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="supressList" name="supressList" type="checkbox" value="carcasses">
+                <label class="govuk-label govuk-checkboxes__label" for="supressList">
+                  Home address
+                </label>
+              </div>
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="supressList-2" name="supressList" type="checkbox" value="mines">
+                <label class="govuk-label govuk-checkboxes__label" for="supressList-2">
+                  ROA
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+              
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Applicant details
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorApplicantDetails %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+    <h1 class="govuk-heading-l">Applicant's details</h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorFirstName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="firstName">
+            First name
+          </label>
+          <div id="firstName-hint" class="govuk-hint">
+            Enter first name in full, not just initials.
+        </div>
+          <!-- Check for error -->
+        {% if errorFirstName %}
+          <p id="firstName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your full first name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-one-half" id="firstName" name="firstName" type="text" value="{{ data['firstName'] }}">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="middleName">
+          Middle names
+        </label>
+        <div id="middleName-hint" class="govuk-hint">
+          Enter any middle names in full, not just initials.
+        </div>
+          <input class="govuk-input govuk-!-width-one-half" id="middleName" name="middleName" type="text" value="{{ data['middleName'] }}">
+      </div>
+
+      <!-- Check for error -->
+      {% if errorLastName %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="lastName">
+            Last name
+          </label>
+          <div id="lastName-hint" class="govuk-hint">
+            Enter last name in full, not just initials.
+          </div>
+          <!-- Check for error -->
+        {% if errorLastName %}
+          <p id="lastName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your full last name
+          </p>
+        {% endif %} 
+          <input class="govuk-input govuk-!-width-one-half" id="lastName" name="lastName" type="text" value="{{ data['lastName'] }}">
+      </div>
+
+
+      <!-- Check for error -->
+      {% if errorEmail %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+          <label class="govuk-label" for="emailAddress">
+            Email address
+          </label>
+          <!-- Check for error -->
+        {% if errorEmail %}
+          <p id="emailAddress-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your email address
+          </p>
+        {% endif %} 
+          <input class="govuk-input" id="emailAddress" name="emailAddress" type="text" value="{{ data['emailAddress'] }}">
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
