@@ -1,0 +1,92 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirm address
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+    <h2 class="govuk-heading-m">Applicant details</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['dob-day'] }} 
+          {{ data['dob-month'] | displayMonth }} 
+          {{ data['dob-year'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['applicantEmailAddress'] }} </p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </dd>
+      </div>
+    </dl>
+    <h2 class="govuk-heading-m">Details to hide</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Address to hide
+        </dt>
+        <dd class="govuk-summary-list__value">
+          10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Replacement address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          20 Old Street<br>Parkland<br>Townville<br>England<br>XX2 ZZ4
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> licence type</span></a>
+        </dd>
+      </div>
+    </dl>
+  </div>
+</div>
+
+<form action="{{currentUrl}}" method="post">
+
+{{ govukButton({
+  text: "Continue"
+}) }}
+
+</form>
+
+{% endblock %}
