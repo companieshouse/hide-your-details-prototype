@@ -22,6 +22,9 @@
       }) }}
     {% endif %}
     <h1 class="govuk-heading-l">Applicant's details</h1>
+    <div id="H1-hint" class="govuk-hint">
+      Tell us the details of the person who wants to remove their personal information from the Companies House public register.
+  </div>
 
     <form action="{{currentUrl}}" method="post">
 
@@ -98,6 +101,9 @@
           <label class="govuk-label" for="dob">
             Date of birth
           </label>
+          <div id="dob-hint" class="govuk-hint">
+            For example, 31 3 1980
+          </div>
           <!-- Check for error -->
           {% if errorDobDay or errorDobMonth or errorDobYear %}
           <p id="dob-error" class="govuk-error-message">
@@ -158,6 +164,7 @@
           <label class="govuk-label" for="applicantEmailAddress">
             Email address
           </label>
+          
           <!-- Check for error -->
         {% if errorEmail %}
           <p id="applicantEmailAddress-error" class="govuk-error-message">
