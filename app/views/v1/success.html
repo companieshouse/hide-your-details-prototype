@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Success
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-panel govuk-panel--confirmation">
+      <h1 class="govuk-panel__title">
+        Lorem ipsum dolor sit amet 
+      </h1>
+      <div class="govuk-panel__body">
+        Your reference number<br><strong>HDJ2123F</strong>
+      </div>
+    </div>
+
+    <dl class="govuk-summary-list">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['companyNumber']}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company name
+        </dt>
+        <dd class="govuk-summary-list__value">
+            Big Shop Ltd
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Applicant name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Applicant date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['dob-day'] }} 
+          {{ data['dob-month'] | displayMonth }} 
+          {{ data['dob-year'] }} 
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Applicant email address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['applicantEmailAddress'] }}
+        </dd>
+      </div>
+    </dl>
+
+    <p class="govuk-body">Ut enim 
+      ad minim veniam, quis nostrud exercitation ullamco 
+      laboris nisi ut aliquip ex ea commodo consequat</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Lorem ipsum dolor</li>
+      <li>consectetur adipiscing elit</li>
+      <li>sed do eiusmod tempor incididunt</li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

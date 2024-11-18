@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirm your payment
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Confirm your payment</h1>
+
+    <h1 class="govuk-heading-m">Payment details</h1>
+    <table class="govuk-table">
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Card number:</th>
+          <td class="govuk-table__cell govuk-!-font-weight-bold">1234 5678 9101</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Expiry date:</th>
+          <td class="govuk-table__cell govuk-!-font-weight-bold">10/21</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Name on card:</th>
+          <td class="govuk-table__cell govuk-!-font-weight-bold">A. Name</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Billing address:</th>
+          <td class="govuk-table__cell govuk-!-font-weight-bold">1 High street, Plymouth, PL5 6BB</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Confirmation email:</th>
+          <td class="govuk-table__cell govuk-!-font-weight-bold">email@emailserver.com</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form action="{{currentUrl}}" method="post">
+      <button type="submit" class="govuk-button">
+        Confirm payment
+    </button>
+    </form>
+
+    <p class="govuk-body"><a href="#" class="govuk-link">Cancel payment</a></p>
+
+  </div>
+</div>
+
+
+{% endblock %}

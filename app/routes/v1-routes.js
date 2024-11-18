@@ -354,6 +354,19 @@ router.post('/v1/replacement-address-lookup', function (req, res) {
 })
 
 
+// ******* address-manual javascript ********************************
+router.get('/v1/address-manual', function (req, res) {
+  // Set URl
+  res.render('v1/address-manual', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/address-manual', function (req, res) {
+    res.redirect('/v1/address-confirm')
+})
+
+
 // ******* is-address-roa javascript ********************************
 router.get('/v1/replacement-address-confirm', function (req, res) {
   // Set URl
@@ -380,7 +393,7 @@ router.post('/v1/roa-interruption', function (req, res) {
 })
 
 
-// ******* is-address-roa javascript ********************************
+// ******* select-documents javascript ********************************
 router.get('/v1/select-documents', function (req, res) {
   // Set URl
   res.render('v1/select-documents', {
@@ -391,3 +404,43 @@ router.get('/v1/select-documents', function (req, res) {
 router.post('/v1/select-documents', function (req, res) {
     res.redirect('/v1/check-answers')
 })
+
+
+// ******* payment-one javascript ********************************
+router.get('/v1/check-answers', function (req, res) {
+  // Set URl
+  res.render('v1/check-answers', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/check-answers', function (req, res) {
+    res.redirect('/v1/payment-one')
+})
+
+
+// ******* payment-one javascript ********************************
+router.get('/v1/payment-one', function (req, res) {
+  // Set URl
+  res.render('v1/payment-one', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/payment-one', function (req, res) {
+    res.redirect('/v1/payment-two')
+})
+
+
+// ******* payment-two javascript ********************************
+router.get('/v1/payment-two', function (req, res) {
+  // Set URl
+  res.render('v1/payment-two', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/payment-two', function (req, res) {
+    res.redirect('/v1/success')
+})
+
