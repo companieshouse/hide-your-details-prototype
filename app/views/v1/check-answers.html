@@ -13,8 +13,38 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
+  <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+    <h2 class="govuk-heading-m">Company details</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['companyNumber'] == '12345678'  %}
+            BIG SHOP LTD
+          {% else %}
+            MEGAMART LIMITED
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="company-number">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['companyNumber'] }} </p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="company-number">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </dd>
+      </div>
+    </dl>
+    
     <h2 class="govuk-heading-m">Applicant details</h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
@@ -25,20 +55,7 @@
           {{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> name</span></a>
-        </dd>
-      </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Date of birth
-        </dt>
-        <dd class="govuk-summary-list__value">
-          {{ data['dob-day'] }} 
-          {{ data['dob-month'] | displayMonth }} 
-          {{ data['dob-year'] }} 
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+          <a class="govuk-link" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -49,10 +66,26 @@
           <p class="govuk-body">{{ data['applicantEmailAddress'] }} </p>
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="#">Change<span class="govuk-visually-hidden"> contact details</span></a>
+          <a class="govuk-link" href="applicant-details">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Applicant status
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['applicantStatus'] == 'yes'  %}
+            <p class="govuk-body">The applicant is still active in BIG SHOP LTD </p>
+          {% else %}
+            <p class="govuk-body">The applicant is not still active in BIG SHOP LTD </p>
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="applicant-status">Change<span class="govuk-visually-hidden"> contact details</span></a>
         </dd>
       </div>
     </dl>
+
     <h2 class="govuk-heading-m">Details to hide</h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
@@ -78,15 +111,91 @@
         </dd>
       </div>
     </dl>
+
+    <h2 class="govuk-heading-m">Documents selected</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document 1 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Confirmation statement</li>
+            <li>16 September 2024</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document 2 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Total exemption full accounts</li>
+            <li>4 March 2024</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document 3 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Confirmation statement</li>
+            <li>10 September 2023</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Document 4 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Total exemption full accounts</li>
+            <li>11 March 2023</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Declaration</h2>
+
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-one-hint">
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="verification-Statement-one" name="verification-Statement-one" type="checkbox">
+            <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-one">
+              I, <strong>{{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}</strong>, declare that I have ...
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+
+    <form action="{{currentUrl}}" method="post">
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+      
+      </form>
   </div>
 </div>
 
-<form action="{{currentUrl}}" method="post">
-
-{{ govukButton({
-  text: "Continue"
-}) }}
-
-</form>
 
 {% endblock %}

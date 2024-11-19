@@ -19,79 +19,8 @@
 
     <p class="govuk-body">You'll need to select the documents you want to remove your personal information from. It costs £XX for each document.
     </p>
-
-    <hr class="govuk-!-margin-top-5 govuk-!-margin-bottom-5">
-
-    <h2 class="govuk-heading-m">Filter by category</h2>
   </div>
 </div>
-
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-third">
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="category">
-        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="accounts" name="accounts" type="checkbox" onclick="filter_table()">
-            <label class="govuk-label govuk-checkboxes__label" for="accounts" style="font-size: 16px;">
-              Accounts
-            </label>
-          </div>
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="capital" name="capital" type="checkbox" onclick="filter_table()">
-            <label class="govuk-label govuk-checkboxes__label" for="capital" style="font-size: 16px;">
-              Capital
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
-    
-  </div>
-
-  <div class="govuk-grid-column-one-third">
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="category">
-        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="charges" name="charges" type="checkbox" onclick="filter_table()">
-            <label class="govuk-label govuk-checkboxes__label" for="charges" style="font-size: 16px;">
-              Charges
-            </label>
-          </div>
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="statement" name="statement" type="checkbox" onclick="filter_table()">
-            <label class="govuk-label govuk-checkboxes__label" for="statements" style="font-size: 16px;">
-              Confirmation statements / Annual returns
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
-  </div>
-
-  <div class="govuk-grid-column-one-third">
-    <div class="govuk-form-group">
-      <fieldset class="govuk-fieldset" aria-describedby="category-2">
-        <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="incorporation" name="incorporation" type="checkbox" onclick="filter_table()">
-            <label class="govuk-label govuk-checkboxes__label" for="incorporation" style="font-size: 16px;">
-              Incorporation
-            </label>
-          </div>
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="officers" name="officers" type="checkbox" onclick="filter_table()">
-            <label class="govuk-label govuk-checkboxes__label" for="officers" style="font-size: 16px;">
-              Officers
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
-  </div>
-</div>
-
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
@@ -101,10 +30,9 @@
       <table class="govuk-table" id="documents_table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row" name="header">
-            <th class="govuk-table__header" scope="col" id="select-all"></th>
+            <th class="govuk-table__header" scope="col"></th>
             <th class="govuk-table__header" scope="col">Date</th>
             <th class="govuk-table__header" scope="col">Type</th>
-            <th class="govuk-table__header" scope="col">Name</th>
             <th class="govuk-table__header" scope="col">Description</th>
           </tr>
         </thead>
@@ -120,8 +48,7 @@
             </td>
             <td class="govuk-table__cell">02 Apr 2024</td>
             <td class="govuk-table__cell">CS01</td>
-            <td class="govuk-table__cell">Confirmation statement</td>
-            <td class="govuk-table__cell">Made on 2 April 2024 with updates</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 2 April 2024 with updates</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -135,8 +62,7 @@
             </td>
             <td class="govuk-table__cell">27 Mar 2024</td>
             <td class="govuk-table__cell">PSC04</td>
-            <td class="govuk-table__cell">Change</td>
-            <td class="govuk-table__cell">Change of details for Mr Smith as a person with significant control on 26 March 2024</td>
+            <td class="govuk-table__cell"><b>Change</b> of details for Mr Smith as a person with significant control on 26 March 2024</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -150,8 +76,7 @@
             </td>
             <td class="govuk-table__cell">26 Mar 20243</td>
             <td class="govuk-table__cell">PSC07</td>
-            <td class="govuk-table__cell">Cessation</td>
-            <td class="govuk-table__cell">Cessation of Bob Robinson as a person with significant control on 1 February 2024</td>
+            <td class="govuk-table__cell"><b>Cessation</b> of Bob Robinson as a person with significant control on 1 February 2024</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -165,8 +90,7 @@
             </td>
             <td class="govuk-table__cell">26 Mar 2024</td>
             <td class="govuk-table__cell">TM01</td>
-            <td class="govuk-table__cell">Termination of appointment</td>
-            <td class="govuk-table__cell">Termination of appointment of Bob Robinson as a director on 1 February 2024</td>
+            <td class="govuk-table__cell"><b>Termination of appointment</b> of Bob Robinson as a director on 1 February 2024</td>
           </tr>
           <tr class="govuk-table__row" name="accounts">
             <td class="govuk-table__cell">
@@ -180,8 +104,7 @@
             </td>
             <td class="govuk-table__cell">27 Nov 2023</td>
             <td class="govuk-table__cell">AA</td>
-            <td class="govuk-table__cell">Micro company accounts</td>
-            <td class="govuk-table__cell">Micro company accounts made up to 28 February 2023</td>
+            <td class="govuk-table__cell"><b>Micro company accounts</b> made up to 28 February 2023</td>
           </tr>
           <tr class="govuk-table__row" name="statement">
             <td class="govuk-table__cell">
@@ -195,8 +118,7 @@
             </td>
             <td class="govuk-table__cell">08 Mar 2023</td>
             <td class="govuk-table__cell">CS01</td>
-            <td class="govuk-table__cell">Confirmation statement</td>
-            <td class="govuk-table__cell">Confirmation statement made on 22 February 2023 with updates</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 22 February 2023 with updates</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -210,8 +132,7 @@
             </td>
             <td class="govuk-table__cell">07 Mar 2023</td>
             <td class="govuk-table__cell">PSC01</td>
-            <td class="govuk-table__cell">Notification</td>
-            <td class="govuk-table__cell">Notification of Lisa Smith as a person with significant control on 1 February 2023</td>
+            <td class="govuk-table__cell"><b>Notification</b> of Lisa Smith as a person with significant control on 1 February 2023</td>
           </tr>
           <tr class="govuk-table__row" name="accounts">
             <td class="govuk-table__cell">
@@ -225,8 +146,7 @@
             </td>
             <td class="govuk-table__cell">08 Feb 2023</td>
             <td class="govuk-table__cell">AD01</td>
-            <td class="govuk-table__cell">Registered office address changed</td>
-            <td class="govuk-table__cell">Registered office address changed from Big Shop 10 Old Street Parkland Townville England XX1 ZZ2 to Big Shop 20 Old Street Parkland Townville England XX2 ZZ4 on 8 February 2023</td>
+            <td class="govuk-table__cell"><b>Registered office address changed</b> from Big Shop 10 Old Street Parkland Townville England XX1 ZZ2 to Big Shop 20 Old Street Parkland Townville England XX2 ZZ4 on 8 February 2023</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -240,8 +160,7 @@
             </td>
             <td class="govuk-table__cell">08 Feb 2023</td>
             <td class="govuk-table__cell">NEWINC</td>
-            <td class="govuk-table__cell">Appointment</td>
-            <td class="govuk-table__cell">Appointment of Mr Daniel Adam Chehade as a director on 8 February 2023</td>
+            <td class="govuk-table__cell"><b>Appointment</b> of Mr Daniel Adam Chehade as a director on 8 February 2023</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -255,8 +174,7 @@
             </td>
             <td class="govuk-table__cell">26 Mar 2023</td>
             <td class="govuk-table__cell">PSC04</td>
-            <td class="govuk-table__cell">Change</td>
-            <td class="govuk-table__cell">Change of details for Mr Smith as a person with significant control on 26 March 2024</td>
+            <td class="govuk-table__cell"><b>Change</b> of details for Mr Smith as a person with significant control on 26 March 2024</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -270,8 +188,7 @@
             </td>
             <td class="govuk-table__cell">26 Mar 2023</td>
             <td class="govuk-table__cell">PSC07</td>
-            <td class="govuk-table__cell">Cessation</td>
-            <td class="govuk-table__cell">Cessation of Bob Robinson as a person with significant control on 1 February 2024</td>
+            <td class="govuk-table__cell"><b>Cessation</b> of Bob Robinson as a person with significant control on 1 February 2024</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -285,8 +202,7 @@
             </td>
             <td class="govuk-table__cell">26 Mar 2023</td>
             <td class="govuk-table__cell">TM01</td>
-            <td class="govuk-table__cell">Termination of appointment</td>
-            <td class="govuk-table__cell">Termination of appointment of Bob Robinson as a director on 1 February 2023</td>
+            <td class="govuk-table__cell"><b>Termination of appointment</b> of Bob Robinson as a director on 1 February 2023</td>
           </tr>
           <tr class="govuk-table__row" name="accounts">
             <td class="govuk-table__cell">
@@ -300,8 +216,7 @@
             </td>
             <td class="govuk-table__cell">27 Nov 2022</td>
             <td class="govuk-table__cell">AA</td>
-            <td class="govuk-table__cell">Micro company accounts</td>
-            <td class="govuk-table__cell">Micro company accounts made up to 28 February 2022</td>
+            <td class="govuk-table__cell"><b>Micro company accounts</b> made up to 28 February 2022</td>
           </tr>
           <tr class="govuk-table__row" name="statement">
             <td class="govuk-table__cell">
@@ -315,8 +230,7 @@
             </td>
             <td class="govuk-table__cell">08 Mar 2022</td>
             <td class="govuk-table__cell">CS01</td>
-            <td class="govuk-table__cell">Confirmation statement</td>
-            <td class="govuk-table__cell">Confirmation statement made on 22 February 2022 with updates</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 22 February 2022 with updates</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -330,8 +244,7 @@
             </td>
             <td class="govuk-table__cell">07 Mar 2022</td>
             <td class="govuk-table__cell">PSC01</td>
-            <td class="govuk-table__cell">Notification</td>
-            <td class="govuk-table__cell">Notification of Adam Cool as a person with significant control on 1 February 2022</td>
+            <td class="govuk-table__cell"><b>Notification</b> of Adam Cool as a person with significant control on 1 February 2022</td>
           </tr>
           <tr class="govuk-table__row" name="accounts">
             <td class="govuk-table__cell">
@@ -345,8 +258,7 @@
             </td>
             <td class="govuk-table__cell">08 Feb 2022</td>
             <td class="govuk-table__cell">AD01</td>
-            <td class="govuk-table__cell">Registered office address changed</td>
-            <td class="govuk-table__cell">Registered office address changed from Big Shop 34 New Street Parkland Townville England XX1 ZZ2 to Big Shop 10 Old Street Parkland Townville England XX1 ZZ2 on 8 February 2022</td>
+            <td class="govuk-table__cell"><b>Registered office address changed</b> from Big Shop 34 New Street Parkland Townville England XX1 ZZ2 to Big Shop 10 Old Street Parkland Townville England XX1 ZZ2 on 8 February 2022</td>
           </tr>
           <tr class="govuk-table__row" name="officers">
             <td class="govuk-table__cell">
@@ -360,8 +272,7 @@
             </td>
             <td class="govuk-table__cell">08 Feb 2022</td>
             <td class="govuk-table__cell">NEWINC</td>
-            <td class="govuk-table__cell">Appointment</td>
-            <td class="govuk-table__cell">Appointment of Mr Mary Robinson as a director on 8 February 2022</td>
+            <td class="govuk-table__cell"><b>Appointment</b> of Mr Mary Robinson as a director on 8 February 2022</td>
           </tr>
           <tr class="govuk-table__row" name="incorporation">
             <td class="govuk-table__cell">
@@ -375,8 +286,7 @@
             </td>
             <td class="govuk-table__cell">08 Feb 2022</td>
             <td class="govuk-table__cell">CS01</td>
-            <td class="govuk-table__cell">Incorporation</td>
-            <td class="govuk-table__cell"></td>
+            <td class="govuk-table__cell"><b>Incorporation</b></td>
           </tr>
         </tbody>
       </table>

@@ -121,9 +121,6 @@ router.post('/v1/applicant-details', function (req, res) {
   var firstNameError = false
   var lastNameError = false
   var emailError = false
-  var dayHasError = false
-  var monthHasError = false
-  var yearHasError = false
   var detailsError = false
 
   // Check if user has filled out first name
@@ -159,39 +156,6 @@ router.post('/v1/applicant-details', function (req, res) {
       })
     }
 
-        // Check if user has filled out a day
-  if (req.session.data['dob-day'] === '') {
-    // No value so add error to array
-    dayHasError = true
-    detailsError = true
-    errors.push({
-      text: 'The date must include a day',
-      href: '#dob-day'
-    })
-  }
-
-  // Check if user has filled out a month
-  if (req.session.data['dob-month'] === '') {
-    // No value so add error to array
-    monthHasError = true
-    detailsError = true
-    errors.push({
-      text: 'The date must include a month',
-      href: '#dob-day'
-    })
-  }
-
-  // Check if user has filled out a year
-  if (req.session.data['dob-year'] === '') {
-    // No value so add error to array
-    yearHasError = true
-    detailsError = true
-    errors.push({
-      text: 'The date must include a year',
-      href: '#dob-day'
-    })
-  }
-
   // Check if eother filed not filled out
   if (detailsError) {
     // Re-show page with error value as true so errors will show
@@ -199,16 +163,17 @@ router.post('/v1/applicant-details', function (req, res) {
       errorFirstName: firstNameError,
       errorLastName: lastNameError,
       errorEmail: emailError,
-      errorDobDay: dayHasError,
-      errorDobMonth: monthHasError,
-      errorDobYear: yearHasError,
       errorApplicantDetails: detailsError,
       errorList: errors
     })
   } 
   else  
   {
-    res.redirect('/v1/applicant-status')
+    if (req.session.data['companyNumber'] === '12345678')  {
+      res.redirect('/v1/applicant-status')
+    } else {
+      res.redirect('/v1/address-lookup')
+    } 
   }
 })
 
@@ -239,7 +204,38 @@ router.post('/v1/applicant-status', function (req, res) {
       errorList: errors
     })
   } else {
-      res.redirect('/v1/roa-interruption')
+      res.redirect('/v1/address-type')
+  }
+})
+
+
+// ******* applicant status javascript ********************************
+router.get('/v1/address-type', function (req, res) {
+  // Set URl
+  res.render('v1/address-type', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/address-type', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['addressType'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select what the address is being used as',
+      href: '#addressType'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v1/address-type', {
+      errorAddressType: true,
+      errorList: errors
+    })
+  } else {
+      res.redirect('/v1/address-lookup')
   }
 })
 
@@ -315,8 +311,14 @@ router.get('/v1/address-confirm', function (req, res) {
 })
 
 router.post('/v1/address-confirm', function (req, res) {
-  if (req.session.data['applicantStatus'] === 'no') {
+  var addressTypeList = req.session.data['addressType'];
+
+  //Only ROA selected, Applicant not active, or Company dissolved so skip replacement address
+  if ((addressTypeList.includes('roa') && addressTypeList.length < 2) 
+  || (req.session.data['applicantStatus'] == 'no')
+  || (req.session.data['companyNumber'] == '22446688')) {
     res.redirect('/v1/select-documents')
+    
   } else {
     res.redirect('/v1/replacement-address-lookup')
   }

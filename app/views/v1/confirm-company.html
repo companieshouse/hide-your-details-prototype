@@ -23,12 +23,8 @@
           <dd class="govuk-summary-list__value">
           {% if data['companyNumber'] == '12345678' %}
             Big Shop ltd
-          {% elif data['companyNumber'] == '11112222' %}
-            Contruction 123 ltd
-          {% elif data['companyNumber'] == '23232323'%}
-            Dance Warehouse ltd
-          {% elif data['companyNumber'] =='44445555'%}
-            Landscaping ltd
+          {% elif data['companyNumber'] == '22446688' %}
+            Megamart Limited
           {% else%} 
             A N Other Company ltd
           {% endif %}
@@ -41,7 +37,11 @@
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">Status</dt>
           <dd class="govuk-summary-list__value">
+          {% if data['companyNumber'] == '12345678'  %}
             Active
+          {% else %}
+            Dissolved
+          {% endif %} 
           </dd>
         </div>
         <div class="govuk-summary-list__row">
