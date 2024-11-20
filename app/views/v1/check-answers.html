@@ -19,6 +19,14 @@
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
+          Company number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['companyNumber'] }} </p>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
           Company name
         </dt>
         <dd class="govuk-summary-list__value">
@@ -32,17 +40,6 @@
           <a class="govuk-link" href="company-number">Change<span class="govuk-visually-hidden"> name</span></a>
         </dd>
       </div>
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Company number
-        </dt>
-        <dd class="govuk-summary-list__value">
-          <p class="govuk-body">{{ data['companyNumber'] }} </p>
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="company-number">Change<span class="govuk-visually-hidden"> contact details</span></a>
-        </dd>
-      </div>
     </dl>
     
     <h2 class="govuk-heading-m">Applicant details</h2>
@@ -52,7 +49,7 @@
           Name
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}
+          {{ data['fullName']}} 
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
@@ -60,13 +57,30 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Email address
+          Date of birth
         </dt>
         <dd class="govuk-summary-list__value">
-          <p class="govuk-body">{{ data['applicantEmailAddress'] }} </p>
+          {{ data['dob-day'] }} 
+          {{ data['dob-month'] | displayMonth }} 
+          {{ data['dob-year'] }} 
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link" href="applicant-details">Change<span class="govuk-visually-hidden"> contact details</span></a>
+          <a class="govuk-link" href="applicant-details">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Former Name 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['differentName'] %}
+            {{ data['differentNameInput'] }}
+          {% else %}
+            None
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
         </dd>
       </div>
       <div class="govuk-summary-list__row">
@@ -82,6 +96,21 @@
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="applicant-status">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Contact information</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact email
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['contactEmail'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="contact-email">Change<span class="govuk-visually-hidden"> previous application number</span></a>
         </dd>
       </div>
     </dl>
@@ -180,7 +209,7 @@
           <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="verification-Statement-one" name="verification-Statement-one" type="checkbox">
             <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-one">
-              I, <strong>{{ data['title']}} {{ data['firstName']}} {{ data['middleName']}} {{ data['lastName']}}</strong>, declare that I have ...
+              I, <strong>{{ data['fullName']}} </strong>, declare that I have ...
             </label>
           </div>
         </div>

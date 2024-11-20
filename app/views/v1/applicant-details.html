@@ -24,95 +24,133 @@
     <h1 class="govuk-heading-l">What are the applicant's details?</h1>
     <div id="H1-hint" class="govuk-hint">
       Tell us the details of the person who wants to remove their personal information from the Companies House public register.
-  </div>
+    </div>
 
     <form action="{{currentUrl}}" method="post">
 
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="directorTitle">
-          Title (optional)
-        </label>
-        <div id="directorTitle-hint" class="govuk-hint">
-          For example, Mr, Mrs, Miss, Ms, Dr.
-      </div>
-        <input class="govuk-input govuk-!-width-one-half" id="directorTitle" name="directorTitle" type="text" value="{{ data['directorTitle'] }}">
-    </div>
-
       <!-- Check for error -->
-      {% if errorFirstName %}
+      {% if errorName %}
         <div class="govuk-form-group govuk-form-group--error">
       {% else %}
         <div class="govuk-form-group">
       {% endif %} 
-          <label class="govuk-label" for="firstName">
-            First name
-          </label>
-          <div id="firstName-hint" class="govuk-hint">
-            Enter first name in full, not just initials.
-        </div>
-          <!-- Check for error -->
-        {% if errorFirstName %}
-          <p id="firstName-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter your full first name
+      <label class="govuk-label" for="fullName">
+        Full name
+      </label>
+        <!-- Check for error -->
+        {% if errorName %}
+          <p id="fullName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Enter your full name
           </p>
         {% endif %} 
-          <input class="govuk-input govuk-!-width-one-half" id="firstName" name="firstName" type="text" value="{{ data['firstName'] }}">
-      </div>
-
-      <div class="govuk-form-group">
-        <label class="govuk-label" for="middleName">
-          Middle names
-        </label>
-        <div id="middleName-hint" class="govuk-hint">
-          Enter any middle names in full, not just initials.
-        </div>
-          <input class="govuk-input govuk-!-width-one-half" id="middleName" name="middleName" type="text" value="{{ data['middleName'] }}">
+        <input class="govuk-input" id="fullName" name="fullName" type="text" spellcheck="false" autocomplete="name">
       </div>
 
       <!-- Check for error -->
-      {% if errorLastName %}
-        <div class="govuk-form-group govuk-form-group--error">
+      {% if errorDobDay or errorDobMonth or errorDobYear%}
+      <div class="govuk-form-group govuk-form-group--error">
       {% else %}
-        <div class="govuk-form-group">
+      <div class="govuk-form-group">
       {% endif %} 
-          <label class="govuk-label" for="lastName">
-            Last name
+        <fieldset class="govuk-fieldset" role="group" aria-describedby="dob-hint">
+          <label class="govuk-label" for="dob">
+            Date of birth
           </label>
-          <div id="lastName-hint" class="govuk-hint">
-            Enter last name in full, not just initials.
+          <!-- Check for error -->
+          {% if errorDobDay or errorDobMonth or errorDobYear %}
+          <p id="dob-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The date must include a day, month and year
+          </p>
+          {% endif %} 
+          <div class="govuk-date-input" id="directorDob">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-day">
+                  Day
+                </label>
+                <!-- Check for error -->
+                {% if errorDobDay %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="dob-day" name="dob-day" type="text" value="{{ data['dob-day'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-day" name="dob-day" type="text">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-month">
+                  Month
+                </label>
+                <!-- Check for error -->
+                {% if errorDobMonth %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2 govuk-input--error" id="dob-month" name="dob-month" type="text" value="{{ data['dob-month'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="dob-month" name="dob-month" type="text">
+                {% endif %} 
+              </div>
+            </div>
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label" for="dob-year">
+                  Year
+                </label>
+                <!-- Check for error -->
+                {% if errorDobYear %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4 govuk-input--error" id="dob-year" name="dob-year" type="text" value="{{ data['dob-year'] }}">
+                {% else %}
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="text">
+                {% endif %} 
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+
+      <!-- Check for error -->
+      {% if errorDifferentName %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="differentName-hint">
+          <legend class="govuk-fieldset__legend">
+            Has the applicant used a different name for business purposes?
+          </legend>
+          <div id="differentName-hint" class="govuk-hint">
+            hint text?
           </div>
           <!-- Check for error -->
-        {% if errorLastName %}
-          <p id="lastName-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter your full last name
+          {% if errorDifferentName %}
+          <p id="differentName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if the applicant has used a different name for business purposes
           </p>
-        {% endif %} 
-          <input class="govuk-input govuk-!-width-one-half" id="lastName" name="lastName" type="text" value="{{ data['lastName'] }}">
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="differentName" name="differentName" type="radio" data-aria-controls="conditional-differentName">
+              <label class="govuk-label govuk-radios__label" for="differentName">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-differentName">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="differentNameInput">
+                  Different name
+                </label>
+                <input class="govuk-input govuk-!-width-one-third" id="differentNameInput" name="differentNameInput">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="differentName-2" name="differentName" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="differentName-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
       </div>
-
-
-      <!-- Check for error -->
-      {% if errorEmail %}
-        <div class="govuk-form-group govuk-form-group--error">
-      {% else %}
-        <div class="govuk-form-group">
-      {% endif %} 
-          <label class="govuk-label" for="applicantEmailAddress">
-            Email address
-          </label>
-          <div id="H1-hint" class="govuk-hint">
-            We'll use this if we need more information about the application
-        </div>
-          <!-- Check for error -->
-        {% if errorEmail %}
-          <p id="applicantEmailAddress-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter your email address
-          </p>
-        {% endif %} 
-          <input class="govuk-input" id="applicantEmailAddress" name="applicantEmailAddress" type="text" value="{{ data['applicantEmailAddress'] }}">
-      </div>
-
-
 
       {{ govukButton({
         text: "Continue"
