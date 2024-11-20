@@ -56,6 +56,9 @@
           <label class="govuk-label" for="dob">
             Date of birth
           </label>
+          <div id="differentName-hint" class="govuk-hint">
+            For example, 27 3 1980
+          </div>
           <!-- Check for error -->
           {% if errorDobDay or errorDobMonth or errorDobYear %}
           <p id="dob-error" class="govuk-error-message">
@@ -117,9 +120,6 @@
           <legend class="govuk-fieldset__legend">
             Has the applicant used a different name for business purposes?
           </legend>
-          <div id="differentName-hint" class="govuk-hint">
-            hint text?
-          </div>
           <!-- Check for error -->
           {% if errorDifferentName %}
           <p id="differentName-error" class="govuk-error-message">
@@ -137,8 +137,11 @@
             <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-differentName">
               <div class="govuk-form-group">
                 <label class="govuk-label" for="differentNameInput">
-                  Different name
+                  Tell us the names they've used
                 </label>
+              <div id="differentName-hint" class="govuk-hint">
+              If there's more than one, separate each name with a comma.
+              </div>
                 <input class="govuk-input govuk-!-width-one-third" id="differentNameInput" name="differentNameInput">
               </div>
             </div>
