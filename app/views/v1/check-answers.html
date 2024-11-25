@@ -46,7 +46,7 @@
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Name
+          Full name
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['fullName']}} 
@@ -70,7 +70,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Former Name 
+          Former name 
         </dt>
         <dd class="govuk-summary-list__value">
           {% if data['differentName'] %}
@@ -85,13 +85,13 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Applicant status
+          Does the applicant currently hold an active role in Big Shop Ltd?
         </dt>
         <dd class="govuk-summary-list__value">
           {% if data['applicantStatus'] == 'yes'  %}
-            <p class="govuk-body">The applicant is still active in BIG SHOP LTD </p>
+            <p class="govuk-body">Yes </p>
           {% else %}
-            <p class="govuk-body">The applicant is not still active in BIG SHOP LTD </p>
+            <p class="govuk-body">No </p>
           {% endif %} 
         </dd>
         <dd class="govuk-summary-list__actions">
@@ -115,11 +115,11 @@
       </div>
     </dl>
 
-    <h2 class="govuk-heading-m">Details to hide</h2>
+    <h2 class="govuk-heading-m">Details to remove</h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Address to hide
+          Home address to remove
         </dt>
         <dd class="govuk-summary-list__value">
           10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
@@ -130,7 +130,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Replacement address
+          Replacement correspondence address
         </dt>
         <dd class="govuk-summary-list__value">
           20 Old Street<br>Parkland<br>Townville<br>England<br>XX2 ZZ4
@@ -145,7 +145,7 @@
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Document 1 
+          CS01 
         </dt>
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list">
@@ -159,7 +159,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Document 2 
+          AA 
         </dt>
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list">
@@ -173,7 +173,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Document 3 
+          CS01 
         </dt>
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list">
@@ -187,7 +187,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Document 4 
+          AA 
         </dt>
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list">
@@ -201,7 +201,7 @@
       </div>
     </dl>
 
-
+<!--
     <div class="govuk-form-group govuk-!-margin-bottom-9">
       <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-one-hint">
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -214,6 +214,7 @@
         </div>
       </fieldset>
     </div>
+-->
 
     <form action="{{currentUrl}}" method="post">
 
