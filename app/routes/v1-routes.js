@@ -234,7 +234,7 @@ router.post('/v1/applicant-status', function (req, res) {
 })
 
 
-// ******* applicant status javascript ********************************
+// ******* contact-email javascript ********************************
 router.get('/v1/contact-email', function (req, res) {
   // Set URl
   res.render('v1/contact-email', {
@@ -260,79 +260,12 @@ router.post('/v1/contact-email', function (req, res) {
       errorList: errors
     })
   } else {
-    if (req.session.data['companyNumber'] === '12345678')  {
-      res.redirect('/v1/address-type')
-    } else {
-      res.redirect('/v1/address-lookup')
-    } 
+    res.redirect('/v1/address-lookup')
   }
 })
 
 
-
-// ******* applicant status javascript ********************************
-router.get('/v1/address-type', function (req, res) {
-  // Set URl
-  res.render('v1/address-type', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/address-type', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['addressType'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select what the address is being used as',
-      href: '#addressType'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v1/address-type', {
-      errorAddressType: true,
-      errorList: errors
-    })
-  } else {
-      res.redirect('/v1/address-lookup')
-  }
-})
-
-
-// ******* is-address-roa javascript ********************************
-router.get('/v1/is-address-roa', function (req, res) {
-  // Set URl
-  res.render('v1/is-address-roa', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/is-address-roa', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['addressRoa'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select if the address is the Registered Office Address',
-      href: '#addressRoa'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v1/is-address-roa', {
-      errorAddressRoa: true,
-      errorList: errors
-    })
-  } else {
-      res.redirect('/v1/address-lookup')
-  }
-})
-
-
-// ******* is-address-roa javascript ********************************
+// ******* address-lookup javascript ********************************
 router.get('/v1/address-lookup', function (req, res) {
   // Set URl
   res.render('v1/address-lookup', {
@@ -372,9 +305,40 @@ router.get('/v1/address-confirm', function (req, res) {
 })
 
 router.post('/v1/address-confirm', function (req, res) {
-  // Company dissolved
-  if (req.session.data['companyNumber'] === '22446688') {
-    res.redirect('/v1/select-documents')
+      if (req.session.data['companyNumber'] === '12345678')  {
+      res.redirect('/v1/address-type')
+    } else {
+      // Company dissolved
+      res.redirect('/v1/select-documents')
+    } 
+})
+
+
+// ******* applicant status javascript ********************************
+router.get('/v1/address-type', function (req, res) {
+  // Set URl
+  res.render('v1/address-type', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/address-type', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['addressType'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select what the address is being used as',
+      href: '#addressType'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v1/address-type', {
+      errorAddressType: true,
+      errorList: errors
+    })
   } else {
     //Only ROA selected or Applicant not active so skip replacement address
     if ((req.session.data['addressType'].includes('roa') && req.session.data['addressType'].length < 2) 
@@ -444,23 +408,23 @@ router.post('/v1/replacement-address-confirm', function (req, res) {
 })
 
 
-// ******* is-address-roa javascript ********************************
-router.get('/v1/roa-interruption', function (req, res) {
-  // Set URl
-  res.render('v1/roa-interruption', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v1/roa-interruption', function (req, res) {
-    res.redirect('/v1/address-lookup')
-})
-
-
 // ******* select-documents javascript ********************************
 router.get('/v1/select-documents', function (req, res) {
   // Set URl
   res.render('v1/select-documents', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/select-documents', function (req, res) {
+    res.redirect('/v1/check-answers')
+})
+
+
+// ******* select-documents-2 javascript ********************************
+router.get('/v1/select-documents', function (req, res) {
+  // Set URl
+  res.render('v1/select-documents-2', {
     currentUrl: req.originalUrl
   })
 })
