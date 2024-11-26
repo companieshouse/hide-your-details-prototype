@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Confirm address
+  Confirm the home address – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,7 +19,7 @@
 
     <p class="govuk-body">10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2</p>
 
-    <p class="govuk-body govuk-!-margin-bottom-9"><a href="#" class="govuk-link govuk-link--no-visited-state">Change</a></p>
+    <p class="govuk-body govuk-!-margin-bottom-9"><a href="address-lookup" class="govuk-link govuk-link--no-visited-state">Change</a></p>
 
     <form action="{{currentUrl}}" method="post">
 

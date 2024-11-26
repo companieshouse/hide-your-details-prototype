@@ -296,7 +296,20 @@ router.post('/v1/address-lookup', function (req, res) {
 })
 
 
-// ******* is-address-roa javascript ********************************
+// ******* address-manual javascript ********************************
+router.get('/v1/address-manual', function (req, res) {
+  // Set URl
+  res.render('v1/address-manual', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/address-manual', function (req, res) {
+    res.redirect('/v1/address-confirm')
+})
+
+
+// ******* address-confirm javascript ********************************
 router.get('/v1/address-confirm', function (req, res) {
   // Set URl
   res.render('v1/address-confirm', {
@@ -305,12 +318,12 @@ router.get('/v1/address-confirm', function (req, res) {
 })
 
 router.post('/v1/address-confirm', function (req, res) {
-      if (req.session.data['companyNumber'] === '12345678')  {
-      res.redirect('/v1/address-type')
-    } else {
-      // Company dissolved
-      res.redirect('/v1/select-documents')
-    } 
+  if (req.session.data['companyNumber'] === '22446688')  {
+    // dissolved
+    res.redirect('/v1/select-documents')
+  } else {
+    res.redirect('/v1/address-type')
+  }   
 })
 
 
@@ -383,15 +396,15 @@ router.post('/v1/replacement-address-lookup', function (req, res) {
 
 
 // ******* address-manual javascript ********************************
-router.get('/v1/address-manual', function (req, res) {
+router.get('/v1/replacement-address-manual', function (req, res) {
   // Set URl
-  res.render('v1/address-manual', {
+  res.render('v1/replacement-address-manual', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v1/address-manual', function (req, res) {
-    res.redirect('/v1/address-confirm')
+router.post('/v1/replacement-address-manual', function (req, res) {
+    res.redirect('/v1/replacement-address-confirm')
 })
 
 
@@ -469,6 +482,18 @@ router.get('/v1/payment-two', function (req, res) {
 })
 
 router.post('/v1/payment-two', function (req, res) {
+    res.redirect('/v1/payment-three')
+})
+
+// ******* payment-three javascript ********************************
+router.get('/v1/payment-three', function (req, res) {
+  // Set URl
+  res.render('v1/payment-three', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v1/payment-three', function (req, res) {
     res.redirect('/v1/success')
 })
 

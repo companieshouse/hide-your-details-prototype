@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Enter card details
+  Review payment – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -11,106 +11,48 @@ Enter card details
 {% endblock %}
 
 {% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds-from-desktop">
-    <form action="{{currentUrl}}" method="post">
-      <h1 class="govuk-heading-l">Enter card details </h1>
-      <div class="govuk-form-group govuk-!-margin-bottom-0">
-        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold" for="card-number">
-          Card Number
-        </label>
-        <input class="govuk-input govuk-!-width-two-thirds" id="card-number" name="card-number" type="text">
-      </div>
-      <img src="/../../public/images/pay-icons.png" width="435">
 
-      <div class="govuk-form-group govuk-!-margin-top-3">
-        <fieldset class="govuk-fieldset" role="group">
-          <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
-            Expiry date
-          </label>
-          <span class="govuk-hint">For example, 10/20</span>
-          <div class="govuk-date-input" id="expiry-date">
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label">
-                  Month
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" name="expiry-month" type="number" pattern="[0-9]*">
-              </div>
-            </div>
-            
-            <div class="govuk-date-input__item">
-              <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label">
-                  Year
-                </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" name="expiry-year" type="number" pattern="[0-9]*">
-              </div>
-            </div>
-          </div>
-        </fieldset>
-      </div>
+      <form action="{{currentUrl}}" method="post">
 
-      <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
-          Name on card
-        </label>
-        <input class="govuk-input govuk-!-width-two-thirds" name="card-name" type="text">
-      </div>
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--l">Review payment</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Document</th>
+              <th scope="col" class="govuk-table__header">Amount to pay</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Confirmation statement</th>
+              <td class="govuk-table__cell">£xx</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Total exemption full account</th>
+              <td class="govuk-table__cell">£xx</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Confirmation statement</th>
+              <td class="govuk-table__cell">£xx</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Total exemption full account</th>
+              <td class="govuk-table__cell">£xx</td>
+            </tr>
+          </tbody>
+        </table>
 
-      <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-width-one-third govuk-!-font-weight-bold" for="cvc">
-          Card security code
-        </label>
-        <div id="cvc-hint" class="govuk-hint">
-          The last 3 digits on the back of the card
-        </div>
-        <input class="govuk-input govuk-!-width-one-third" id="cvc" name="cvc" type="text">
-        <div class="govuk-!-margin-top-2">
-          <img src="/../../../public/images/security-code.png" height="40" width="65">
-        </div>
-      </div>
+        <h2 class="govuk-heading-m">The total amount to pay is £xx</h2>
 
-      <div class="clear govuk-form-group">
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-1 govuk-!-padding-top-5">Billing address</h2>
-        <span class="govuk-hint">
-          This is the address associated with the card
-        </span>
-        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
-          Country or territory
-        </label>
-        <input class="govuk-input govuk-!-width-two-thirds" name="address-country" type="text">
-      </div>
+              
+        {{ govukButton({
+          text: "Continue to pay"
+        }) }}
 
-      <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
-          Building number or name and street
-        </label>
-        <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-2" name="address-1" type="text">
-        <input class="govuk-input govuk-!-width-two-thirds" name="address-2" type="text">
-      </div>
-
-      <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-width-one-third govuk-!-font-weight-bold">
-          Town or city
-        </label>
-        <input class="govuk-input govuk-!-width-one-third" name="address-town-city" type="text">
-      </div>
-
-      <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-width-one-quarter govuk-!-font-weight-bold">
-          Postcode
-        </label>
-        <input class="govuk-input govuk-!-width-one-quarter" name="address-postcode" type="text">
-      </div>
-
-      <button type="submit" class="govuk-button">
-          Submit
-      </button>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
-
-
 {% endblock %}

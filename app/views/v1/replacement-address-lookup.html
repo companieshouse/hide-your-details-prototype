@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  What is the address
+  What is the replacement correspondence address? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -58,7 +58,7 @@
         <input class="govuk-input govuk-input--width-5" id="propertyName" name="propertyName" type="text">
       </div>
 
-      <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Enter address manually</a></p>
+      <p class="govuk-body"><a href="replacement-address-manual" class="govuk-link govuk-link--no-visited-state">Enter address manually</a></p>
       
       {{ govukButton({
         text: "Find address"

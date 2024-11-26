@@ -1,51 +1,147 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  Confirm your payment
+Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  {% include "includes/phase-banner.html" %}
-  {% include "includes/account-banner.html" %}
-  {% include "includes/back-link.html" %}
-{% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Confirm your payment</h1>
-
-    <h1 class="govuk-heading-m">Payment details</h1>
-    <table class="govuk-table">
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Card number:</th>
-          <td class="govuk-table__cell govuk-!-font-weight-bold">1234 5678 9101</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Expiry date:</th>
-          <td class="govuk-table__cell govuk-!-font-weight-bold">10/21</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Name on card:</th>
-          <td class="govuk-table__cell govuk-!-font-weight-bold">{{ data['fullName']}} </td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th class="govuk-table__header govuk-!-font-weight-regular govuk-!-padding-bottom-3 govuk-!-padding-top-3 govuk-!-width-one-third">Billing address:</th>
-          <td class="govuk-table__cell govuk-!-font-weight-bold">1 High street, Plymouth, PL5 6BB</td>
-        </tr>
-      </tbody>
-    </table>
-
+  <div class="govuk-grid-column-two-thirds-from-desktop">
     <form action="{{currentUrl}}" method="post">
-      <button type="submit" class="govuk-button">
-        Confirm payment
-    </button>
+      <h1 class="govuk-heading-l">Enter card details </h1>
+
+      <div class="grey-box">
+        <h2 class="govuk-heading-m">Payment summary</h2>
+
+        <p class="govuk-body">Address to be removed from 4 documents</p>
+        <ul class="govuk-list">
+          <li>Total amount:</li>
+          <li><h2 class="govuk-heading-l">£xx.xx</h2></li>
+        </ul>
+      </div>
+      
+
+      <div class="govuk-form-group govuk-!-margin-top-5 govuk-!-margin-bottom-0">
+        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold" for="card-number">
+          Card Number
+        </label>
+        <img src="/../../public/images/pay-icons.png" width="435">
+        <input class="govuk-input govuk-!-width-two-thirds" id="card-number" name="card-number" type="text" value="1234 5678 9101 1213">
+      </div>
+
+      <div class="govuk-form-group govuk-!-margin-top-3">
+        <fieldset class="govuk-fieldset" role="group">
+          <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
+            Expiry date
+          </label>
+          <span class="govuk-hint">For example, 10/20</span>
+          <div class="govuk-date-input" id="expiry-date">
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label">
+                  Month
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" name="expiry-month" type="number" pattern="[0-9]*" value="1">
+              </div>
+            </div>
+            
+            <div class="govuk-date-input__item">
+              <div class="govuk-form-group">
+                <label class="govuk-label govuk-date-input__label">
+                  Year
+                </label>
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" name="expiry-year" type="number" pattern="[0-9]*" value="2026">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
+          Name on card
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" name="card-name" type="text" value="{{ data['fullName']}} ">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label govuk-!-width-one-third govuk-!-font-weight-bold" for="cvc">
+          Card security code
+        </label>
+        <div id="cvc-hint" class="govuk-hint">
+          The last 3 digits on the back of the card
+        </div>
+        <input class="govuk-input govuk-input--width-3" id="cvc" name="cvc" type="text" value="123">
+        <img src="/../../../public/images/security-code.png" height="40" width="65">
+      </div>
+
+      <hr>
+
+      <div class="clear govuk-form-group">
+        <h2 class="govuk-heading-m govuk-!-padding-top-5">Billing address</h2>
+        <span class="govuk-hint">
+          This is the address associated with the card
+        </span>
+        <label class="govuk-label govuk-!-margin-top-5">
+          Address line 1
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" name="address-1" type="text" value="20 Old Street">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label">
+          Address line 2 (optional)
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-2" name="address-2" type="text" value="Parkland">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label">
+          Town or city
+        </label>
+        <input class="govuk-input govuk-!-width-one-third" name="address-town-city" type="text" value="Townville">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label">
+          Country or territory
+        </label>
+        <input class="govuk-input govuk-!-width-one-half" name="address-town-city" type="text" value="England">
+      </div>
+
+      <div class="govuk-form-group">
+        <label class="govuk-label">
+          Postcode
+        </label>
+        <input class="govuk-input govuk-!-width-one-quarter" name="address-postcode" type="text" value="XX2 ZZ4">
+      </div>
+
+      <hr>
+
+      <div class="clear govuk-form-group">
+        <h2 class="govuk-heading-m govuk-!-padding-top-5">Contact details</h2>
+        <span class="govuk-hint">
+          We’ll send your payment confirmation here
+        </span>
+        <label class="govuk-label govuk-!-margin-top-5">
+          Email
+        </label>
+        <input class="govuk-input govuk-!-width-two-thirds" name="pay-email" type="text" value="{{ data['contactEmail'] }}">
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      <div>
+        <button type="submit" class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Cancel payment
+        </button>
+      </div>
+
     </form>
-
-    <p class="govuk-body"><a href="#" class="govuk-link govuk-link--no-visited-state">Cancel payment</a></p>
-
   </div>
 </div>
 
