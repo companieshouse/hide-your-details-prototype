@@ -250,7 +250,7 @@ router.post('/v1/contact-email', function (req, res) {
   if (req.session.data['contactEmail'] === '') {
     // No value so add error to array
     errors.push({
-      text: 'Enter the contact email address for this application',
+      text: 'Enter an email address for this application',
       href: '#contactEmail'
     })
 
