@@ -1,0 +1,68 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+ {{ serviceName }} – GOV.UK Prototype Kite
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Apply to remove personal details from Companies House public documents</h1>
+
+      <p class="govuk-body">Use this service to ask for personal details such as a home address to be removed from publicly available documents on the Companies House register.</p>
+
+      <p class="govuk-body">You can do this if the home address has been used as a correspondence address, or as a company's former registered office address.</p>
+
+      <div class="govuk-inset-text">
+      If the home address is being used as the company's current registered office address, you must submit a filing to <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01">update the registered office address</a> first.
+      </div>
+
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p class="govuk-body">As part of this service, you'll need to tell us which documents you want us to remove the home address from. It costs £XX for each document you select.</p>
+
+      <p class="govuk-body">Find out which documents contain the home address by searching for the company on the <a href="https://find-and-update.company-information.service.gov.uk/">Companies House register</a> and checking its filing history.</p> 
+
+      <p class="govuk-body"><strong>To use this service, you'll need:</strong></p>
+
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>to sign in to or create a Companies House account</li>
+        <li>the company number</li>
+        <li>the applicant’s full name, date of birth and any previous names used on the Companies House register</li>
+        <li>the home address you want to remove</li>
+        <li>an email address we can contact if we need more information</li>
+        <li>a credit or debit card</li>
+      </ul>
+
+      <p class="govuk-body">If the home address is being used as someone's correspondence address, you'll also need to provide an address to replace it.</p>
+
+      <p class="govuk-body">It takes around 10 minutes to complete this application.</p>
+
+      {{ govukButton({
+        text: "Start",
+        href: "sign-in",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">Other ways to remove your personal information</h2>
+
+      <p class="govuk-body">If you're at serious risk of violence or intimidation, or your details have been used by a company without your permission, read the guidance on <a href="https://www.gov.uk/guidance/applying-to-protect-your-personal-information-on-the-companies-house-register">removing your personal information from the Companies House public register</a>.</p>
+
+      
+
+    </div>
+  </div>
+{% endblock %}

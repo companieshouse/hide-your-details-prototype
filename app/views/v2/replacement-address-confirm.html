@@ -1,0 +1,34 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirm the replacement correspondence address – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Confirm the replacement correspondence address</h1>
+
+    <p class="govuk-body">20 Old Street<br>Parkland<br>Townville<br>England<br>XX2 ZZ4</p>
+
+    <p class="govuk-body govuk-!-margin-bottom-9"><a href="replacement-address-lookup.html" class="govuk-link govuk-link--no-visited-state">Change</a></p>
+
+    <form action="{{currentUrl}}" method="post">
+
+      {{ govukButton({
+        text: "Confirm and continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% set title = "" %}
+{% extends "layouts/main.html" %}
+
+{% set serviceName %}
+{{title}}
+{% endset%}
+
+{% block pageTitle %}
+  Sign in – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- Check for error -->
+      {% if errorEmail or errorPassword %}
+        {{ govukErrorSummary({
+            titleText: "There is a problem",
+            errorList: errorList
+          }) }}
+      {% endif %}
+      <h1 class="govuk-heading-xl">Sign in to Companies House</h1>
+      <div class="govuk-inset-text">
+        You must sign in to or create a Companies House account. Your WebFiling details will not work with this service.
+      </div>
+      <form action="{{currentUrl}}" method="post">
+        
+
+        <!-- Check for error -->
+        {% if errorEmail %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+          <div class="govuk-form-group">
+        {% endif %} 
+            <label class="govuk-label" for="emailAddress">
+              Email address
+            </label>
+            <!-- Check for error -->
+          {% if errorEmail %}
+            <p id="emailAddress-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter your email address
+            </p>
+          {% endif %} 
+            <input class="govuk-input" id="emailAddress" name="emailAddress" type="text">
+        </div>
+
+        <!-- Check for error -->
+        {% if errorPassword %}
+          <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+          <div class="govuk-form-group">
+        {% endif %} 
+            <label class="govuk-label" for="password">
+              Password
+            </label>
+          <!-- Check for error -->
+          {% if errorPassword %}
+            <p id="password-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter your password
+            </p>
+          {% endif %} 
+            <input class="govuk-input" id="password" name="password" type="text">
+        </div>
+        
+        {{ govukButton({
+        text: "Sign in"
+        }) }}
+        <p>
+          <a href="" class="govuk-link govuk-link--no-visited-state">Register a new account</a>
+        </p>
+        <p>
+          <a href="" class="govuk-link govuk-link--no-visited-state">I've forgotten my password</a>
+        </p>
+      </form>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,163 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Select documents – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Select documents</h1>
+
+    <p class="govuk-body">We'll only remove your personal information from the documents you select. It costs £XX for each document.
+    </p>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form action="{{currentUrl}}" method="post">
+
+      <table class="govuk-table" id="documents_table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row" name="header">
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col">Date</th>
+            <th class="govuk-table__header" scope="col">Type</th>
+            <th class="govuk-table__header" scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row" name="statement">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document6" value="document6">
+                <label class="govuk-label govuk-checkboxes__label" for="document6">
+                  <span class="govuk-visually-hidden">Confirmation statement</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Mar 2022</td>
+            <td class="govuk-table__cell">CS01</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 22 February 2022 with updates</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document7" value="document7">
+                <label class="govuk-label govuk-checkboxes__label" for="document7">
+                  <span class="govuk-visually-hidden">Notification</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">07 Mar 2022</td>
+            <td class="govuk-table__cell">PSC01</td>
+            <td class="govuk-table__cell"><b>Notification</b> of Adam Cool as a person with significant control on 1 February 2022</td>
+          </tr>
+          <tr class="govuk-table__row" name="accounts">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document8" value="document8">
+                <label class="govuk-label govuk-checkboxes__label" for="document8">
+                  <span class="govuk-visually-hidden">Registered office address changed</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Feb 2022</td>
+            <td class="govuk-table__cell">AD01</td>
+            <td class="govuk-table__cell"><b>Registered office address changed</b> from Big Shop 34 New Street Parkland Townville England XX1 ZZ2 to Big Shop 10 Old Street Parkland Townville England XX1 ZZ2 on 8 February 2022</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document9" value="document9">
+                <label class="govuk-label govuk-checkboxes__label" for="document9">
+                  <span class="govuk-visually-hidden">Appointment</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Feb 2022</td>
+            <td class="govuk-table__cell">NEWINC</td>
+            <td class="govuk-table__cell"><b>Appointment</b> of Mr Mary Robinson as a director on 8 February 2022</td>
+          </tr>
+          <tr class="govuk-table__row" name="incorporation">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document10" value="document10">
+                <label class="govuk-label govuk-checkboxes__label" for="document10">
+                  <span class="govuk-visually-hidden">Incorporation</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Feb 2022</td>
+            <td class="govuk-table__cell">CS01</td>
+            <td class="govuk-table__cell"><b>Incorporation</b></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body govuk-visually-hidden" id="no_results_paragraph">Sorry, no documents in the selected category are available for this company.</p>
+
+      <nav class="govuk-pagination" aria-label="Pagination" id="document_pagination">
+        <div class="govuk-pagination__prev">
+          <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="select-documents.html" rel="prev">
+            <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+            </svg>
+            <span class="govuk-pagination__link-title">
+              Previous<span class="govuk-visually-hidden"> page</span>
+            </span>
+          </a>
+        </div>
+        <ul class="govuk-pagination__list">
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="select-documents" aria-label="Page 1">
+              1
+            </a>
+          </li>
+          <li class="govuk-pagination__item govuk-pagination__item--current">
+            <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="select-documents-2.html" aria-label="Page 2" aria-current="page">
+              2
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-pagination__next">
+          <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="#" rel="next">
+            <span class="govuk-pagination__link-title">
+              Next<span class="govuk-visually-hidden"> page</span>
+            </span>
+            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+      
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/application.js"></script>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Review payment – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+      <form action="{{currentUrl}}" method="post">
+
+        <table class="govuk-table">
+          <caption class="govuk-table__caption govuk-table__caption--l">Review payment</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Document</th>
+              <th scope="col" class="govuk-table__header">Amount to pay</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Confirmation statement</th>
+              <td class="govuk-table__cell">£XX</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Total exemption full account</th>
+              <td class="govuk-table__cell">£XX</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Confirmation statement</th>
+              <td class="govuk-table__cell">£XX</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Total exemption full account</th>
+              <td class="govuk-table__cell">£XX</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="govuk-heading-m">The total amount to pay is £XX</h2>
+
+              
+        {{ govukButton({
+          text: "Continue to pay"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

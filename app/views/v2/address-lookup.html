@@ -1,0 +1,69 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the home address? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorPostcode %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+    <h1 class="govuk-heading-l">What is the home address you want to remove?</h1>
+       
+
+
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorPostcode %}
+        <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+        <div class="govuk-form-group">
+      {% endif %} 
+      <label class="govuk-label" for="postcode">
+        UK postcode
+      </label>
+        <!-- Check for error -->
+        {% if errorPostcode %}
+        <p id="postcode-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter the postcode of the address to hide
+        </p>
+        {% endif %} 
+        <input class="govuk-input govuk-input--width-10" id="postcode" name="postcode" type="text">
+      </div>  
+
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="propertyName">
+          Property name or number (optional)
+        </label>
+        <div id="event-name-hint" class="govuk-hint">
+          For example, 'The Mill', '116' or 'Flat 37a'
+        </div>
+        <input class="govuk-input govuk-input--width-5" id="propertyName" name="propertyName" type="text">
+      </div>
+
+      <p class="govuk-body"><a href="address-manual" class="govuk-link govuk-link--no-visited-state">Enter address manually</a></p>
+      
+      {{ govukButton({
+        text: "Find address"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

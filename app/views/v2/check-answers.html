@@ -1,0 +1,230 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Check your answers</h1>
+    <h2 class="govuk-heading-m">Company details</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['companyNumber'] }} </p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class=" govuk-link--no-visited-state" href="company-number">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['companyNumber'] == '12345678'  %}
+            BIG SHOP LTD
+          {% else %}
+            MEGAMART LIMITED
+          {% endif %} 
+        </dd>
+      </div>
+    </dl>
+    
+    <h2 class="govuk-heading-m">Applicant details</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['fullName']}} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class=" govuk-link--no-visited-state" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['dob-day'] }} 
+          {{ data['dob-month'] | displayMonth }} 
+          {{ data['dob-year'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="applicant-details">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Former name 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['differentName'] %}
+            {{ data['differentNameInput'] }}
+          {% else %}
+            None provided
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Does the applicant currently hold an active role in Big Shop Ltd?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['applicantStatus'] == 'yes'  %}
+            <p class="govuk-body">Yes </p>
+          {% else %}
+            <p class="govuk-body">No </p>
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="applicant-status">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Contact information</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Contact email
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['contactEmail'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="contact-email">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Details to remove</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home address to remove
+        </dt>
+        <dd class="govuk-summary-list__value">
+          10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="address-lookup">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Replacement correspondence address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          20 Old Street<br>Parkland<br>Townville<br>England<br>XX2 ZZ4
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="replacement-address-lookup">Change<span class="govuk-visually-hidden"> licence type</span></a>
+        </dd>
+      </div>
+    </dl>
+
+    <h2 class="govuk-heading-m">Documents selected</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          CS01 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Confirmation statement</li>
+            <li>16 September 2024</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          AA 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Total exemption full accounts</li>
+            <li>4 March 2024</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          CS01 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Confirmation statement</li>
+            <li>10 September 2023</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class=" govuk-link--no-visited-state" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          AA 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list">
+            <li>Total exemption full accounts</li>
+            <li>11 March 2023</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+    </dl>
+
+<!--
+    <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-one-hint">
+        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="verification-Statement-one" name="verification-Statement-one" type="checkbox">
+            <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-one">
+              I, <strong>{{ data['fullName']}} </strong>, declare that I have ...
+            </label>
+          </div>
+        </div>
+      </fieldset>
+    </div>
+-->
+
+    <form action="{{currentUrl}}" method="post">
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+      
+      </form>
+  </div>
+</div>
+
+
+{% endblock %}
