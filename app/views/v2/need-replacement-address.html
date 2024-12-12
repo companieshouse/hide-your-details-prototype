@@ -33,11 +33,11 @@
         <fieldset class="govuk-fieldset" aria-describedby="needReplacementAddress-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-            Do you need to add a replacement address?
+            Do you need to provide a replacement address?
             </h1>
           </legend>
           <div id="needReplacementAddress-hint" class="govuk-hint">
-            ...
+            Select 'yes' if the home address is being used as the applicant's current correspondence address.
           </div>
           <!-- Check for error -->
           {% if errorNeedReplacementAddress %}
@@ -63,6 +63,16 @@
         </fieldset>
       </div>
         
+        <details class="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      If you're applying to remove a company's current registered office address
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+    If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01">update the registered office address</a> before you can apply for it to be removed from historical documents. 
+  </div>
+</details>
               
         {{ govukButton({
           text: "Continue"
