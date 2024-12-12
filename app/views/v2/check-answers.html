@@ -73,7 +73,7 @@
           Former name 
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data['differentName'] %}
+          {% if data['differentNameInput'] %}
             {{ data['differentNameInput'] }}
           {% else %}
             None provided
@@ -117,20 +117,82 @@
 
     <h2 class="govuk-heading-m">Details to remove</h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      {% if data['suppressList'].includes('address')  %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Home address to remove
+          Home address
         </dt>
         <dd class="govuk-summary-list__value">
-          10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
         </dd>
         <dd class="govuk-summary-list__actions">
-          <a class="govuk-link govuk-link--no-visited-state" href="address-lookup">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+          <a class="govuk-link govuk-link--no-visited-state" href="suppress-list">Change<span class="govuk-visually-hidden"> previous application number</span></a>
         </dd>
       </div>
+      {% endif %} 
+
+      {% if data['suppressList'].includes('signature')  %}
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Replacement correspondence address
+          Signature
+        </dt>
+        <dd class="govuk-summary-list__value">
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="suppress-list">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      {% endif %} 
+
+      {% if data['suppressList'].includes('day')  %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Day of date of birth
+        </dt>
+        <dd class="govuk-summary-list__value">
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="suppress-list">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      {% endif %} 
+
+      {% if data['suppressList'].includes('occupation')  %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Occupation
+        </dt>
+        <dd class="govuk-summary-list__value">
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="suppress-list">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      {% endif %} 
+    </dl>
+
+    {% if data['suppressList'].includes('address')  %}
+    <h2 class="govuk-heading-m">Address you want to remove</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Home address
+        </dt>
+        <dd class="govuk-summary-list__value">
+          20 Old Street<br>Parkland<br>Townville<br>England<br>XX2 ZZ4
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="address-lookup">Change<span class="govuk-visually-hidden"> licence type</span></a>
+        </dd>
+      </div>
+    </dl>
+    {% endif %} 
+
+    {% if data['needReplacementAddress'] == 'yes'  %}
+    <h2 class="govuk-heading-m">Replacement address</h2>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Replacement address
         </dt>
         <dd class="govuk-summary-list__value">
           20 Old Street<br>Parkland<br>Townville<br>England<br>XX2 ZZ4
@@ -140,6 +202,7 @@
         </dd>
       </div>
     </dl>
+    {% endif %} 
 
     <h2 class="govuk-heading-m">Documents selected</h2>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
@@ -200,21 +263,6 @@
         </dd>
       </div>
     </dl>
-
-<!--
-    <div class="govuk-form-group govuk-!-margin-bottom-9">
-      <fieldset class="govuk-fieldset" aria-describedby="verification-Statement-one-hint">
-        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-          <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="verification-Statement-one" name="verification-Statement-one" type="checkbox">
-            <label class="govuk-label govuk-checkboxes__label" for="verification-Statement-one">
-              I, <strong>{{ data['fullName']}} </strong>, declare that I have ...
-            </label>
-          </div>
-        </div>
-      </fieldset>
-    </div>
--->
 
     <form action="{{currentUrl}}" method="post">
 

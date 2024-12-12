@@ -73,7 +73,7 @@
           Former name 
         </dt>
         <dd class="govuk-summary-list__value">
-          {% if data['differentName'] %}
+          {% if data['differentName'] == 'yes' %}
             {{ data['differentNameInput'] }}
           {% else %}
             None provided

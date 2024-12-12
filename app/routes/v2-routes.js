@@ -353,47 +353,47 @@ router.get('/v2/address-confirm', function (req, res) {
 })
 
 router.post('/v2/address-confirm', function (req, res) {
-  if (req.session.data['companyNumber'] === '22446688')  {
-    // dissolved
+  if ((req.session.data['companyNumber'] === '22446688') 
+  || (req.session.data['applicantStatus'] === 'no')) {
+    // dissolved company or inactive applicant
     res.redirect('/v2/select-documents')
-  } else {
-    res.redirect('/v2/address-type')
+  }  else {
+    res.redirect('/v2/need-replacement-address')
   }   
 })
 
 
-// ******* applicant status javascript ********************************
-router.get('/v2/address-type', function (req, res) {
+// ******* need-replacement-address javascript ********************************
+router.get('/v2/need-replacement-address', function (req, res) {
   // Set URl
-  res.render('v2/address-type', {
+  res.render('v2/need-replacement-address', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v2/address-type', function (req, res) {
+router.post('/v2/need-replacement-address', function (req, res) {
   // Create empty array
   var errors = []
 
   // Check if user has filled out a value
-  if (typeof req.session.data['addressType'] === 'undefined') {
+  if (typeof req.session.data['needReplacementAddress'] === 'undefined') {
     // No value so add error to array
     errors.push({
-      text: 'Select what the address is being used as',
-      href: '#addressType'
+      text: 'Select yes if you need to add a replacement address',
+      href: '#needReplacementAddress'
     })
 
     // Re-show page with error value as true so errors will show
-    res.render('v2/address-type', {
-      errorAddressType: true,
+    res.render('v2/need-replacement-address', {
+      errorNeedReplacementAddress: true,
       errorList: errors
     })
   } else {
-    //Only ROA selected or Applicant not active so skip replacement address
-    if ((req.session.data['addressType'].includes('roa') && req.session.data['addressType'].length < 2) 
-     || (req.session.data['applicantStatus'] == 'no')) {
-      res.redirect('/v2/select-documents')
-    } else {
+    if (req.session.data['needReplacementAddress'] === 'yes') {
       res.redirect('/v2/replacement-address-lookup')
+    } else {
+      // User inputted value so move to next page
+      res.redirect('/v2/select-documents')
     }
   }
 })
