@@ -291,7 +291,7 @@ router.post('/v2/suppress-list', function (req, res) {
       errorList: errors
     })
   } else {
-    if (req.session.data['suppressList'].includes('address')) {
+    if (req.session.data['suppressList'].includes('Home address')) {
       res.redirect('/v2/address-lookup')
     } else {
       res.redirect('/v2/select-documents')
