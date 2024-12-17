@@ -470,14 +470,14 @@ router.post('/v2/select-documents', function (req, res) {
 
 
 // ******* select-documents-2 javascript ********************************
-router.get('/v2/select-documents', function (req, res) {
+router.get('/v2/select-documents-2', function (req, res) {
   // Set URl
   res.render('v2/select-documents-2', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v2/select-documents', function (req, res) {
+router.post('/v2/select-documents-2', function (req, res) {
     res.redirect('/v2/check-answers')
 })
 
