@@ -389,7 +389,7 @@ router.post('/v2/need-replacement-address', function (req, res) {
       errorList: errors
     })
   } else {
-    if (req.session.data['needReplacementAddress'] === 'yes') {
+    if (req.session.data['needReplacementAddress'] === 'Yes') {
       res.redirect('/v2/replacement-address-lookup')
     } else {
       // User inputted value so move to next page
