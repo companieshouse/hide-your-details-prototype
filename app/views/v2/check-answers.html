@@ -148,7 +148,8 @@
       {% endif %} 
     </dl>
 
-    {% if data['needReplacementAddress'] == 'Yes'  %}
+    
+    {% if data['suppressList'].includes('Home address')  %}
       <h2 class="govuk-heading-m">Replacement address</h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -162,6 +163,7 @@
             <a class="govuk-link govuk-link--no-visited-state" href="need-replacement-address">Change<span class="govuk-visually-hidden"> licence type</span></a>
           </dd>
         </div>
+        {% if data['needReplacementAddress'] == 'Yes'  %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Replacement correspondence address
@@ -173,6 +175,7 @@
             <a class="govuk-link govuk-link--no-visited-state" href="replacement-address-lookup">Change<span class="govuk-visually-hidden"> licence type</span></a>
           </dd>
         </div>
+        {% endif %} 
       </dl>
     {% endif %} 
 
