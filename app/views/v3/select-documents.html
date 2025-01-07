@@ -1,0 +1,314 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Select documents – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Select documents</h1>
+
+    <p class="govuk-body">Tell us which documents you want us to remove the personal details from. It costs £XX for each document.
+    </p>
+
+    <p class="govuk-body">You can see which documents contain the personal details by searching the
+      <a href="https://chs-prototype-b54692577ef9.herokuapp.com/live/company-info#history" class="govuk-link govuk-link--no-visited-state" target="blank">filing history for 
+
+      {% if data['companyNumber'] == '12345678'  %}
+        BIG SHOP LTD
+      {% else %}
+        MEGAMART LIMITED
+      {% endif %} (opens in new tab).
+      </a>
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <form action="{{currentUrl}}" method="post">
+
+      <table class="govuk-table" id="documents_table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row" name="header">
+            <th class="govuk-table__header" scope="col"></th>
+            <th class="govuk-table__header" scope="col">Date</th>
+            <th class="govuk-table__header" scope="col">Type</th>
+            <th class="govuk-table__header" scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row" name="statement">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document1" value="document1">
+                <label class="govuk-label govuk-checkboxes__label" for="document1">
+                  <span class="govuk-visually-hidden">confirmation statement</span>
+                </label>
+              </div>
+            </td>
+            <td class="govuk-table__cell">02 Apr 2024</td>
+            <td class="govuk-table__cell">CS01</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 2 April 2024 with updates</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document3" value="document3">
+                <label class="govuk-label govuk-checkboxes__label" for="document3">
+                  <span class="govuk-visually-hidden">Cessation</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">27 Mar 20243</td>
+            <td class="govuk-table__cell">PSC07</td>
+            <td class="govuk-table__cell"><b>Cessation</b> of Lisa Smith as a person with significant control on 1 February 2024</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document2" value="document2">
+                <label class="govuk-label govuk-checkboxes__label" for="document2">
+                  <span class="govuk-visually-hidden">Change</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">26 Mar 2024</td>
+            <td class="govuk-table__cell">PSC04</td>
+            <td class="govuk-table__cell"><b>Change</b> of details for Paul Smith as a person with significant control on 26 March 2024</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document4" value="document4">
+                <label class="govuk-label govuk-checkboxes__label" for="document4">
+                  <span class="govuk-visually-hidden">Termination</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">26 Mar 2024</td>
+            <td class="govuk-table__cell">TM01</td>
+            <td class="govuk-table__cell"><b>Termination of appointment</b> of Daniel Adam Chehade as a director on 1 February 2024</td>
+          </tr>
+          <tr class="govuk-table__row" name="accounts">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document5" value="document5">
+                <label class="govuk-label govuk-checkboxes__label" for="document5">
+                  <span class="govuk-visually-hidden">Micro company accounts</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">27 Nov 2023</td>
+            <td class="govuk-table__cell">AA</td>
+            <td class="govuk-table__cell"><b>Micro company accounts</b> made up to 28 February 2023</td>
+          </tr>
+          <tr class="govuk-table__row" name="statement">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document6" value="document6">
+                <label class="govuk-label govuk-checkboxes__label" for="document6">
+                  <span class="govuk-visually-hidden">Confirmation statement</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Mar 2023</td>
+            <td class="govuk-table__cell">CS01</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 22 February 2023 with updates</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document7" value="document7">
+                <label class="govuk-label govuk-checkboxes__label" for="document7">
+                  <span class="govuk-visually-hidden">Notification</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">07 Mar 2023</td>
+            <td class="govuk-table__cell">PSC01</td>
+            <td class="govuk-table__cell"><b>Notification</b> of Lisa Smith as a person with significant control on 1 February 2023</td>
+          </tr>
+          <tr class="govuk-table__row" name="accounts">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document8" value="document8">
+                <label class="govuk-label govuk-checkboxes__label" for="document8">
+                  <span class="govuk-visually-hidden">Registered office address changed</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Feb 2023</td>
+            <td class="govuk-table__cell">AD01</td>
+            <td class="govuk-table__cell"><b>Registered office address changed</b> from Big Shop 108 Pin Lane Parkland Townville England XX1 ZZ2 to Big Shop 25 Old Street Parkland Townville England XX2 ZZ4 on 8 February 2023</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document9" value="document9">
+                <label class="govuk-label govuk-checkboxes__label" for="document9">
+                  <span class="govuk-visually-hidden">Appointment</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Feb 2023</td>
+            <td class="govuk-table__cell">NEWINC</td>
+            <td class="govuk-table__cell"><b>Appointment</b> of Mr Daniel Adam Chehade as a director on 8 February 2023</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document2" value="document2">
+                <label class="govuk-label govuk-checkboxes__label" for="document2">
+                  <span class="govuk-visually-hidden">Change</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">26 Mar 2023</td>
+            <td class="govuk-table__cell">PSC04</td>
+            <td class="govuk-table__cell"><b>Change</b> of details for Gary Robinson as a person with significant control on 26 March 2024</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document4" value="document4">
+                <label class="govuk-label govuk-checkboxes__label" for="document4">
+                  <span class="govuk-visually-hidden">Termination</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">26 Mar 2023</td>
+            <td class="govuk-table__cell">TM01</td>
+            <td class="govuk-table__cell"><b>Termination of appointment</b> of Mary Robinson as a director on 1 February 2023</td>
+          </tr>
+          <tr class="govuk-table__row" name="accounts">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document5" value="document5">
+                <label class="govuk-label govuk-checkboxes__label" for="document5">
+                  <span class="govuk-visually-hidden">Micro company accounts</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">27 Nov 2022</td>
+            <td class="govuk-table__cell">AA</td>
+            <td class="govuk-table__cell"><b>Micro company accounts</b> made up to 28 February 2022</td>
+          </tr>
+          <tr class="govuk-table__row" name="statement">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document6" value="document6">
+                <label class="govuk-label govuk-checkboxes__label" for="document6">
+                  <span class="govuk-visually-hidden">Confirmation statement</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Mar 2022</td>
+            <td class="govuk-table__cell">CS01</td>
+            <td class="govuk-table__cell"><b>Confirmation statement</b> made on 22 February 2022 with updates</td>
+          </tr>
+          <tr class="govuk-table__row" name="officers">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document7" value="document7">
+                <label class="govuk-label govuk-checkboxes__label" for="document7">
+                  <span class="govuk-visually-hidden">Notification</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">07 Mar 2022</td>
+            <td class="govuk-table__cell">PSC01</td>
+            <td class="govuk-table__cell"><b>Notification</b> of Gary Robinson as a person with significant control on 1 February 2022</td>
+          </tr>
+          <tr class="govuk-table__row" name="accounts">
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                <input type="checkbox" class="govuk-checkboxes__input" name="doc_select" id="document8" value="document8">
+                <label class="govuk-label govuk-checkboxes__label" for="document8">
+                  <span class="govuk-visually-hidden">Registered office address changed</span>
+                </label>
+              </div>
+            </td>
+            </td>
+            <td class="govuk-table__cell">08 Feb 2022</td>
+            <td class="govuk-table__cell">AD01</td>
+            <td class="govuk-table__cell"><b>Registered office address changed</b> from Big Shop 34 New Street Parkland Townville England XX1 ZZ2 to Big Shop 108 Pin Lane Parkland Townville England Y23 Q12 on 8 February 2022</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="govuk-body govuk-visually-hidden" id="no_results_paragraph">Sorry, no documents in the selected category are available for this company.</p>
+
+      <nav class="govuk-pagination" aria-label="Pagination" id="document_pagination">
+        <div class="govuk-pagination__prev">
+          <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="#" rel="prev">
+            <svg class="govuk-pagination__icon govuk-pagination__icon--prev" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"></path>
+            </svg>
+            <span class="govuk-pagination__link-title">
+              Previous<span class="govuk-visually-hidden"> page</span>
+            </span>
+          </a>
+        </div>
+        <ul class="govuk-pagination__list">
+          <li class="govuk-pagination__item govuk-pagination__item--current">
+            <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="select-documents" aria-label="Page 1">
+              1
+            </a>
+          </li>
+          <li class="govuk-pagination__item">
+            <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="select-documents-2.html" aria-label="Page 2" aria-current="page">
+              2
+            </a>
+          </li>
+        </ul>
+        <div class="govuk-pagination__next">
+          <a class="govuk-link govuk-link--no-visited-state govuk-pagination__link" href="select-documents-2.html" rel="next">
+            <span class="govuk-pagination__link-title">
+              Next<span class="govuk-visually-hidden"> page</span>
+            </span>
+            <svg class="govuk-pagination__icon govuk-pagination__icon--next" xmlns="http://www.w3.org/2000/svg" height="13" width="15" aria-hidden="true" focusable="false" viewBox="0 0 15 13">
+              <path d="m8.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"></path>
+            </svg>
+          </a>
+        </div>
+      </nav>
+      
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+  <script src="/public/javascripts/application.js"></script>
+{% endblock %}
