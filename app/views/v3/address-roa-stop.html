@@ -1,0 +1,31 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the company number? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">You cannot continue using this service</h1>
+
+      <p class="govuk-body">You must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state" target="_blank">update the registered office address (opens in a new tab)</a> before continuing with this service.</p>
+
+      <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+        Integer ante velit, fermentum vulputate feugiat at, gravida eu lacus. Ut 
+        luctus posuere ante, eget fringilla mauris congue quis. Praesent libero mi, 
+        placerat sed mollis non, lacinia eu arcu. Sed quis volutpat nulla, in faucibus ex.</p>
+      
+      <p class="govuk-body">Cras auctor luctus risus quis placerat. Mauris sagittis efficitur auctor. 
+        Suspendisse placerat erat quis sagittis rhoncus. </p>
+  
+    </div>
+  </div>
+{% endblock %}

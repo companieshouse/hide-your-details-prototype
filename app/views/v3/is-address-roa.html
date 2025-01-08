@@ -14,7 +14,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <!-- Check for error -->
-      {% if errorNeedReplacementAddress %}
+      {% if errorIsAddressRoa %}
       {{ govukErrorSummary({
         titleText: "There is a problem",
         errorList: errorList
@@ -24,37 +24,42 @@
       <form action="{{currentUrl}}" method="post">
 
       <!-- Check for error -->
-      {% if errorNeedReplacementAddress %}
+      {% if errorIsAddressRoa %}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
       {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="needReplacementAddress-hint">
+        <fieldset class="govuk-fieldset" aria-describedby="isAddressRoa-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Is the applicant's home address being used as their current correspondence address?
+              Is the applicant's home address being used as the Registered Office Address for 
+              {% if data['companyNumber'] == '12345678'  %}
+                BIG SHOP LTD
+              {% else %}
+                MEGAMART LIMITED
+              {% endif %} ?
             </h1>
           </legend>
-          <div id="needReplacementAddress-hint" class="govuk-hint">
-            If so you will need to provide a replacement address.
+          <div id="isAddressRoa-hint" class="govuk-hint">
+            ...
           </div>
           <!-- Check for error -->
-          {% if errorNeedReplacementAddress %}
-          <p id="needReplacementAddress-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select yes if you need to add a replacement address
+          {% if errorIsAddressRoa %}
+          <p id="isAddressRoa-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select yes if the home address is the registered office address
           </p>
           {% endif %} 
 
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="needReplacementAddress" name="needReplacementAddress" type="radio" value="yes">
-              <label class="govuk-label govuk-radios__label" for="needReplacementAddress">
+              <input class="govuk-radios__input" id="isAddressRoa" name="isAddressRoa" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="isAddressRoa">
                 Yes
               </label>
             </div>
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="needReplacementAddress-2" name="needReplacementAddress" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="needReplacementAddress-2">
+              <input class="govuk-radios__input" id="isAddressRoa-2" name="isAddressRoa" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="isAddressRoa-2">
                 No
               </label>
             </div>
@@ -62,17 +67,17 @@
         </fieldset>
       </div>
 
-      <!-- <div class="govuk-warning-text">
+      <div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
           <span class="govuk-visually-hidden">Warning</span>
           If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state" target="_blank">update the registered office address (opens in a new tab)</a> before continuing with this service.
         </strong>
-      </div> -->
+      </div>
     
-        {{ govukButton({
-          text: "Continue"
-        }) }}
+      {{ govukButton({
+        text: "Continue"
+      }) }}
 
       </form>
     </div>
