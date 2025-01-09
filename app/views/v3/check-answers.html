@@ -14,7 +14,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-l">Check your answers</h1>
+    <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
     <dl class="govuk-summary-list govuk-!-margin-bottom-9">
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
@@ -106,7 +106,7 @@
       </div>
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Details that you want to remove
+          Details to remove from documents
         </dt>
         <dd class="govuk-summary-list__value">
           <ul class="govuk-list govuk-list--bullet">
@@ -124,7 +124,7 @@
         {% if data['suppressList'].includes('Home address')  %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Home address to remove
+            Home address to remove from documents
           </dt>
           <dd class="govuk-summary-list__value">
             10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
@@ -137,7 +137,7 @@
       {% endif %} 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
-          Do you need to provide a replacement correspondence address?
+          Replacement correspondence address
         </dt>
         <dd class="govuk-summary-list__value">
           {{ data['needReplacementAddress'] }} 

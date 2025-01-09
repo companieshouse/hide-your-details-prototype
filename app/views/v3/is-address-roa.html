@@ -32,17 +32,17 @@
         <fieldset class="govuk-fieldset" aria-describedby="isAddressRoa-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Is the applicant's home address being used as the Registered Office Address for 
-              {% if data['companyNumber'] == '12345678'  %}
+              Is the home address being used as the company's current registered office address?</h1> 
+              <!--{% if data['companyNumber'] == '12345678'  %}
                 BIG SHOP LTD
               {% else %}
                 MEGAMART LIMITED
               {% endif %} ?
-            </h1>
+            </h1>-->
           </legend>
-          <div id="isAddressRoa-hint" class="govuk-hint">
-            ...
-          </div>
+          <p class="govuk-body">
+            You can check this by searching for the company on the <a href="#">Companies House register (opens in a new tab)</a>.
+          </p>
           <!-- Check for error -->
           {% if errorIsAddressRoa %}
           <p id="isAddressRoa-error" class="govuk-error-message">
@@ -67,6 +67,7 @@
         </fieldset>
       </div>
 
+<!--
       <div class="govuk-warning-text">
         <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
         <strong class="govuk-warning-text__text">
@@ -74,7 +75,8 @@
           If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state" target="_blank">update the registered office address (opens in a new tab)</a> before continuing with this service.
         </strong>
       </div>
-    
+    -->
+
       {{ govukButton({
         text: "Continue"
       }) }}
