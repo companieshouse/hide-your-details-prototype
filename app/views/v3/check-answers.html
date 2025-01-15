@@ -140,25 +140,16 @@
           Replacement correspondence address
         </dt>
         <dd class="govuk-summary-list__value">
-          {{ data['needReplacementAddress'] }} 
+        {% if data['needReplacementAddress'] == 'yes'  %}
+          20 New Street<br>Parkland<br>Townville<br>England<br>XX3 WW8
+        {% else %}
+          Not required
+        {% endif %}
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link govuk-link--no-visited-state" href="need-replacement-address">Change<span class="govuk-visually-hidden"> licence type</span></a>
         </dd>
       </div>
-      {% if data['needReplacementAddress'] == 'Yes'  %}
-      <div class="govuk-summary-list__row">
-        <dt class="govuk-summary-list__key">
-          Replacement correspondence address
-        </dt>
-        <dd class="govuk-summary-list__value">
-          20 New Street<br>Parkland<br>Townville<br>England<br>XX3 WW8
-        </dd>
-        <dd class="govuk-summary-list__actions">
-          <a class="govuk-link govuk-link--no-visited-state" href="replacement-address-lookup">Change<span class="govuk-visually-hidden"> licence type</span></a>
-        </dd>
-      </div>
-      {% endif %} 
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           Documents selected 
