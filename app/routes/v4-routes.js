@@ -193,44 +193,7 @@ router.post('/v4/applicant-details', function (req, res) {
     })
   } 
   else  
-  {
-    if (req.session.data['companyNumber'] === '12345678')  {
-      res.redirect('/v4/applicant-status')
-    } else {
-      res.redirect('/v4/contact-email')
-    } 
-  }
-})
-
-
-// ******* applicant status javascript ********************************
-router.get('/v4/applicant-status', function (req, res) {
-  // Set URl
-  res.render('v4/applicant-status', {
-    currentUrl: req.originalUrl
-  })
-})
-
-router.post('/v4/applicant-status', function (req, res) {
-  // Create empty array
-  var errors = []
-
-  // Check if user has filled out a value
-  if (typeof req.session.data['applicantStatus'] === 'undefined') {
-    // No value so add error to array
-    errors.push({
-      text: 'Select if the applicant is active in the company',
-      href: '#applicantStatus'
-    })
-
-    // Re-show page with error value as true so errors will show
-    res.render('v4/applicant-status', {
-      errorApplicantStatus: true,
-      errorList: errors
-    })
-  } else {
-      res.redirect('/v4/contact-email')
-  }
+  {res.redirect('/v4/contact-email')}
 })
 
 
@@ -353,13 +316,49 @@ router.get('/v4/address-confirm', function (req, res) {
 })
 
 router.post('/v4/address-confirm', function (req, res) {
-  if ((req.session.data['companyNumber'] === '22446688') 
-  || (req.session.data['applicantStatus'] === 'no')) {
-    // dissolved company or inactive applicant
+  if (req.session.data['companyNumber'] === '22446688') {
+    // dissolved company
     res.redirect('/v4/select-documents')
-  }  else {
-    res.redirect('/v4/is-address-roa')
+  } else {
+    res.redirect('/v4/applicant-status')
   }   
+})
+
+
+// ******* applicant status javascript ********************************
+router.get('/v4/applicant-status', function (req, res) {
+  // Set URl
+  res.render('v4/applicant-status', {
+    currentUrl: req.originalUrl
+  })
+})
+
+router.post('/v4/applicant-status', function (req, res) {
+  // Create empty array
+  var errors = []
+
+  // Check if user has filled out a value
+  if (typeof req.session.data['applicantStatus'] === 'undefined') {
+    // No value so add error to array
+    errors.push({
+      text: 'Select if the applicant is active in the company',
+      href: '#applicantStatus'
+    })
+
+    // Re-show page with error value as true so errors will show
+    res.render('v4/applicant-status', {
+      errorApplicantStatus: true,
+      errorList: errors
+    })
+  } else {
+
+    if (req.session.data['applicantStatus'] === 'yes') {
+      // dissolved company
+      res.redirect('/v4/is-address-roa')
+    } else {
+      res.redirect('/v4/select-documents')
+    } 
+  }
 })
 
 // ******* is-address-roa javascript ********************************
