@@ -32,7 +32,7 @@
         <fieldset class="govuk-fieldset" aria-describedby="needReplacementAddress-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Is the home address being used as the applicant's current correspondence address?
+              Is the home address being used as {{ data['fullName'] }}'s current correspondence address?
             </h1>
           </legend>
           <div id="needReplacementAddress-hint" class="govuk-hint">
@@ -62,13 +62,18 @@
         </fieldset>
       </div>
 
-      <!-- <div class="govuk-warning-text">
-        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-        <strong class="govuk-warning-text__text">
-          <span class="govuk-visually-hidden">Warning</span>
-          If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state" target="_blank">update the registered office address (opens in a new tab)</a> before continuing with this service.
-        </strong>
-      </div> -->
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            What is a correspondence address?
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <p class="govuk-body">It is the address to which we send official correspondence (post) for the attention of this person.</p>
+          <p class="govuk-body">It is only required for certain roles, for example directors and people with significant control (PSCs). It is shown on the <a href="https://find-and-update.company-information.service.gov.uk/" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a>.</p>
+          <p class="govuk-body">On certain documents, it may be called the 'service address'.</p>
+        </div>
+      </details>
     
         {{ govukButton({
           text: "Continue"
