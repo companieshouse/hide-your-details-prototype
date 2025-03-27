@@ -29,28 +29,46 @@ Provide contact email address – {{ serviceName }} – GOV.UK Prototype Kit
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
       <div class="govuk-form-group">
-    {% endif %} 
-        <h1 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--l" for="contactEmail">
-            Provide an email address for this application
-          </label>
-        </h1>
-        <div id="contactEmail-hint" class="govuk-hint">
-          We'll use this if we need more information about the application. 
-        </div>
-        <!-- Check for error -->
-      {% if errorContactEmail %}
-        <p id="contactEmail-error" class="govuk-error-message">
-          <span class="govuk-visually-hidden">Error:</span> Enter an email address for this application
-        </p>
       {% endif %} 
-        <input class="govuk-input" id="contactEmail" name="contactEmail" type="text">
-    </div>
-
-
-
-
-
+        <fieldset class="govuk-fieldset">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What is the email address for this application?
+            </h1>
+          </legend>
+          <div id="contactEmail-hint" class="govuk-hint">
+            We'll use this if we need more information about the application. 
+          </div>
+          <!-- Check for error -->
+          {% if errorContactEmail %}
+          <p id="contactEmail-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select the email address for this application
+          </p>
+          {% endif %} 
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contactEmail" name="contactEmail" type="radio" value="email">
+              <label class="govuk-label govuk-radios__label" for="contactEmail">
+                {{ data['emailAddress']}}
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="contactEmail-2" name="contactEmail" type="radio" value="differentEmail" data-aria-controls="conditional-differentEmail">
+              <label class="govuk-label govuk-radios__label" for="contactEmail-2">
+                A different email address
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-differentEmail">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="differentEmailInput">
+                  Enter the email address
+                </label>
+                <input class="govuk-input govuk-!-width-one-half" id="differentEmailInput" name="differentEmailInput">
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div> 
 
       {{ govukButton({
         text: "Continue"
