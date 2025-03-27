@@ -21,7 +21,6 @@ Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
           <li><h2 class="govuk-heading-l">£xx.xx</h2></li>
         </ul>
       </div>
-      
 
       <div class="govuk-form-group govuk-!-margin-top-5 govuk-!-margin-bottom-0">
         <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold" for="card-number">
@@ -33,7 +32,7 @@ Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
 
       <div class="govuk-form-group govuk-!-margin-top-3">
         <fieldset class="govuk-fieldset" role="group">
-          <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
+          <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold" for="expiryMonth">
             Expiry date
           </label>
           <span class="govuk-hint">For example, 10/20</span>
@@ -43,16 +42,16 @@ Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
                 <label class="govuk-label govuk-date-input__label">
                   Month
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-2" name="expiry-month" type="number" pattern="[0-9]*" value="1">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="expiryMonth" name="expiryMonth" type="number" pattern="[0-9]*" value="1">
               </div>
             </div>
             
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
-                <label class="govuk-label govuk-date-input__label">
+                <label class="govuk-label govuk-date-input__label" for="expiryYear">
                   Year
                 </label>
-                <input class="govuk-input govuk-date-input__input govuk-input--width-4" name="expiry-year" type="number" pattern="[0-9]*" value="2026">
+                <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="expiryYear" name="expiryYear" type="number" pattern="[0-9]*" value="2026">
               </div>
             </div>
           </div>
@@ -60,10 +59,10 @@ Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold">
+        <label class="govuk-label govuk-!-width-two-thirds govuk-!-font-weight-bold" for="cardName">
           Name on card
         </label>
-        <input class="govuk-input govuk-!-width-two-thirds" name="card-name" type="text" value="{{ data['fullName']}} ">
+        <input class="govuk-input govuk-!-width-two-thirds" id="cardName" name="cardName" type="text" value="{{ data['fullName']}} ">
       </div>
 
       <div class="govuk-form-group">
@@ -84,38 +83,38 @@ Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
         <span class="govuk-hint">
           This is the address associated with the card
         </span>
-        <label class="govuk-label govuk-!-margin-top-5">
+        <label class="govuk-label govuk-!-margin-top-5" for="address1">
           Address line 1
         </label>
-        <input class="govuk-input govuk-!-width-two-thirds" name="address-1" type="text" value="20 New Street">
+        <input class="govuk-input govuk-!-width-two-thirds" id="address1" name="address1" type="text" value="20 New Street">
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label">
+        <label class="govuk-label"for="address2" >
           Address line 2 (optional)
         </label>
-        <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-2" name="address-2" type="text" value="Parkland">
+        <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-bottom-2" id="address2" name="address2" type="text" value="Parkland">
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label">
+        <label class="govuk-label" for="addressTownCity">
           Town or city
         </label>
-        <input class="govuk-input govuk-!-width-one-third" name="address-town-city" type="text" value="Townville">
+        <input class="govuk-input govuk-!-width-one-third" id="addressTownCity" name="addressTownCity" type="text" value="Townville">
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label">
+        <label class="govuk-label" for="addressCountry">
           Country or territory
         </label>
-        <input class="govuk-input govuk-!-width-one-half" name="address-town-city" type="text" value="England">
+        <input class="govuk-input govuk-!-width-one-half" id="addressCountry" name="addressCountry" type="text" value="England">
       </div>
 
       <div class="govuk-form-group">
-        <label class="govuk-label">
+        <label class="govuk-label" for="addressPostcode">
           Postcode
         </label>
-        <input class="govuk-input govuk-!-width-one-quarter" name="address-postcode" type="text" value="XX3 WW8">
+        <input class="govuk-input govuk-!-width-one-quarter" id="addressPostcode" name="addressPostcode" type="text" value="XX3 WW8">
       </div>
 
       <hr>
@@ -125,10 +124,10 @@ Enter card details  – {{ serviceName }} – GOV.UK Prototype Kit
         <span class="govuk-hint">
           We’ll send your payment confirmation here
         </span>
-        <label class="govuk-label govuk-!-margin-top-5">
+        <label class="govuk-label govuk-!-margin-top-5" for="payEmail">
           Email
         </label>
-        <input class="govuk-input govuk-!-width-two-thirds" name="pay-email" type="text" value="{{ data['contactEmail'] }}">
+        <input class="govuk-input govuk-!-width-two-thirds" id="payEmail" name="payEmail" type="text" value="{{ data['contactEmail'] }}">
       </div>
 
       {{ govukButton({

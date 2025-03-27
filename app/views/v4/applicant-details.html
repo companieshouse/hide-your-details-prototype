@@ -47,6 +47,50 @@
       </div>
 
       <!-- Check for error -->
+      {% if errorDifferentName %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="differentName-hint">
+          <legend class="govuk-fieldset__legend">
+            Have they ever used a different name for Companies House?
+          </legend>
+          <!-- Check for error -->
+          {% if errorDifferentName %}
+          <p id="differentName-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if the applicant has used a different name for business purposes
+          </p>
+          {% endif %} 
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="differentName" name="differentName" type="radio" value="yes"  data-aria-controls="conditional-differentName">
+              <label class="govuk-label govuk-radios__label" for="differentName">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-differentName">
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="differentNameInput">
+                  Tell us the names they've used
+                </label>
+              <div id="differentName-hint" class="govuk-hint">
+              If there's more than one, separate each name with a comma.
+              </div>
+                <input class="govuk-input govuk-!-width-one-third" id="differentNameInput" name="differentNameInput">
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="differentName-2" name="differentName" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="differentName-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      <!-- Check for error -->
       {% if errorDobDay or errorDobMonth or errorDobYear%}
       <div class="govuk-form-group govuk-form-group--error">
       {% else %}
@@ -65,7 +109,7 @@
             <span class="govuk-visually-hidden">Error:</span> The date must include a day, month and year
           </p>
           {% endif %} 
-          <div class="govuk-date-input" id="directorDob">
+          <div class="govuk-date-input" id="dob">
             <div class="govuk-date-input__item">
               <div class="govuk-form-group">
                 <label class="govuk-label govuk-date-input__label" for="dob-day">
@@ -104,52 +148,6 @@
                 <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="dob-year" name="dob-year" type="text">
                 {% endif %} 
               </div>
-            </div>
-          </div>
-        </fieldset>
-      </div>
-
-
-      <!-- Check for error -->
-      {% if errorDifferentName %}
-      <div class="govuk-form-group govuk-form-group--error">
-      {% else %}
-      <div class="govuk-form-group">
-      {% endif %} 
-        <fieldset class="govuk-fieldset" aria-describedby="differentName-hint">
-          <legend class="govuk-fieldset__legend">
-            Have they ever used a different name for Companies House?
-          </legend>
-          <!-- Check for error -->
-          {% if errorDifferentName %}
-          <p id="differentName-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Select if the applicant has used a different name for business purposes
-          </p>
-          {% endif %} 
-
-          <div class="govuk-radios" data-module="govuk-radios">
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="differentName" name="differentName" type="radio" value="yes"  data-aria-controls="conditional-differentName">
-              <label class="govuk-label govuk-radios__label" for="differentName">
-                Yes
-              </label>
-            </div>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-differentName">
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="differentNameInput">
-                  Tell us the names they've used
-                </label>
-              <div id="differentName-hint" class="govuk-hint">
-              If there's more than one, separate each name with a comma.
-              </div>
-                <input class="govuk-input govuk-!-width-one-third" id="differentNameInput" name="differentNameInput">
-              </div>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="differentName-2" name="differentName" type="radio" value="no">
-              <label class="govuk-label govuk-radios__label" for="differentName-2">
-                No
-              </label>
             </div>
           </div>
         </fieldset>

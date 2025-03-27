@@ -1,4 +1,3 @@
-{% set title = "" %}
 {% extends "layouts/main.html" %}
 
 {% set serviceName %}
@@ -25,7 +24,6 @@
       </div>
       <form action="{{currentUrl}}" method="post">
         
-
         <!-- Check for error -->
         {% if errorEmail %}
           <div class="govuk-form-group govuk-form-group--error">
