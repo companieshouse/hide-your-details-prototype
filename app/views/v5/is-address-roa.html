@@ -32,9 +32,12 @@
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Is the home address being used as the company's current registered office address?
+              Is the home address being used as a current company address?
             </h1>
           </legend>
+          <div id="needReplacementAddress-hint" class="govuk-hint">
+            For example, the company's registered office address or its single alternative inspection location (SAIL) address.
+          </div>
           <!-- Check for error -->
           {% if errorIsAddressRoa %}
           <p id="isAddressRoa-error" class="govuk-error-message">
@@ -62,14 +65,12 @@
       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
-            What is a registered office address?
+            What does 'current company address' mean?
           </span>
         </summary>
         <div class="govuk-details__text">
-          <p class="govuk-body">This is the official address that 
-            has been provided by the company, and is shown on the Companies House register.</p>
-          <p class="govuk-body">You can check the current registered office address by searching
-             for the company on the <a href="https://find-and-update.company-information.service.gov.uk/" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a>.</p>
+          <p class="govuk-body">This is a current address that's been provided for the company. It does not mean an address provided for an individual involved in the company (such as a director).</p>
+          <p class="govuk-body">You can check what company addresses have been provided on the <a href="https://find-and-update.company-information.service.gov.uk/" class="govuk-link" target="_blank">Companies House register (opens in a new tab)</a>.</p>
         </div>
       </details>
 
