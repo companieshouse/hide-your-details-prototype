@@ -33,11 +33,11 @@
         <fieldset class="govuk-fieldset" aria-describedby="needReplacementAddress-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-            Do you need to provide a replacement address?
+            Do you need to provide a replacement correspondence address?
             </h1>
           </legend>
           <div id="needReplacementAddress-hint" class="govuk-hint">
-            Select 'yes' if the home address is being used as the applicant's current correspondence address.
+            You only need to provide a replacement if the applicant's home address is being used as their current correspondence address on the public register. 
           </div>
           <!-- Check for error -->
           {% if errorNeedReplacementAddress %}
@@ -48,7 +48,7 @@
 
           <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="needReplacementAddress" name="needReplacementAddress" type="radio" value="yes">
+              <input class="govuk-radios__input" id="needReplacementAddress" name="needReplacementAddress" type="radio" value="Yes">
               <label class="govuk-label govuk-radios__label" for="needReplacementAddress">
                 Yes
               </label>
@@ -62,7 +62,16 @@
           </div>
         </fieldset>
       </div>
-        
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state" target="_blank">update the registered office address (opens in a new tab)</a> before continuing with this service.
+        </strong>
+      </div>
+
+<!--
         <details class="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
@@ -70,9 +79,10 @@
     </span>
   </summary>
   <div class="govuk-details__text">
-    If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link" target="blank"> update the registered office address (opens in a new tab) </a> before you can apply for it to be removed from historical documents. 
+    If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01">update the registered office address</a> before you can apply for it to be removed from historical documents. 
   </div>
 </details>
+-->
               
         {{ govukButton({
           text: "Continue"

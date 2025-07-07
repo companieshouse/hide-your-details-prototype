@@ -291,7 +291,7 @@ router.post('/v2/suppress-list', function (req, res) {
       errorList: errors
     })
   } else {
-    if (req.session.data['suppressList'].includes('address')) {
+    if (req.session.data['suppressList'].includes('Home address')) {
       res.redirect('/v2/address-lookup')
     } else {
       res.redirect('/v2/select-documents')
@@ -389,7 +389,7 @@ router.post('/v2/need-replacement-address', function (req, res) {
       errorList: errors
     })
   } else {
-    if (req.session.data['needReplacementAddress'] === 'yes') {
+    if (req.session.data['needReplacementAddress'] === 'Yes') {
       res.redirect('/v2/replacement-address-lookup')
     } else {
       // User inputted value so move to next page
@@ -470,14 +470,14 @@ router.post('/v2/select-documents', function (req, res) {
 
 
 // ******* select-documents-2 javascript ********************************
-router.get('/v2/select-documents', function (req, res) {
+router.get('/v2/select-documents-2', function (req, res) {
   // Set URl
   res.render('v2/select-documents-2', {
     currentUrl: req.originalUrl
   })
 })
 
-router.post('/v2/select-documents', function (req, res) {
+router.post('/v2/select-documents-2', function (req, res) {
     res.redirect('/v2/check-answers')
 })
 

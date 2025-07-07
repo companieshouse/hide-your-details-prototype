@@ -1,0 +1,88 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+ {{ serviceName }} – GOV.UK Prototype Kite
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">Apply to remove personal details from Companies House public documents</h1>
+
+      <p class="govuk-body">Use this service to ask for personal details to be removed from previously filed documents on the Companies House public register. This includes:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+        <li>home address</li>
+        <li>signature</li>
+        <li>full date of birth (we'll still show your month and year of birth, but the day will be removed)</li>
+        <li>business occupation</li>
+      </ul>
+
+<!--
+      <p class="govuk-body">You can do this if the home address has been used as a correspondence address, or as a company's former registered office address.</p>
+-->
+
+      <div class="govuk-inset-text">
+      If the home address is being used as the company's current registered office address, you must submit a filing to <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state">update the registered office address</a> first.
+      </div>
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p class="govuk-body">As part of this service, you'll need to tell us which documents you want us to remove personal details from. It costs £XX for each document you select.</p>
+
+      <p class="govuk-body">Find out which documents contain the personal details you want to remove by searching for the company on the <a href="https://find-and-update.company-information.service.gov.uk/" class="govuk-link govuk-link--no-visited-state">Companies House register</a> and checking its filing history.</p> 
+
+<!--
+      <p class="govuk-body">If you only want to change a correspondence address that appears in the 'people' tab on the company's public record, you can <a href="https://www.gov.uk/file-changes-to-a-company-with-companies-house">file a change to company information</a> for free.</p>
+-->
+
+      <p class="govuk-body"><strong>To use this service, you'll need:</strong></p>
+
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>to sign in to or create a Companies House account</li>
+        <li>the company number</li>
+        <li>the applicant’s full name, date of birth and any previous names used on the Companies House register</li>
+        <li>the home address you want to remove, if applicable</li>
+        <li>an email address in case we need more information</li>
+        <li>a credit or debit card</li>
+      </ul>
+
+      <p class="govuk-body">If you're applying to remove a home address that's being used as a correspondence address, you may need to provide an address to replace it.</p>
+
+      <p class="govuk-body">It takes around 10 minutes to complete this application.</p>
+
+      {{ govukButton({
+        text: "Start",
+        href: "sign-in",
+        isStartButton: true
+      }) }}
+
+      <h2 class="govuk-heading-m">Other ways to remove your personal information</h2>
+
+<!--
+      <p class="govuk-body">If you only want to change the correspondence address that appears in the 'people' tab on the company's public record, you can <a href="https://www.gov.uk/file-changes-to-a-company-with-companies-house">file a change to company information</a> for free.</p>
+-->
+
+      <p class="govuk-body">If you're at serious risk of violence or intimidation, or your details have been used by a company without your permission, read the guidance on <a href="guidance.html">removing your personal information from the Companies House public register</a>.</p>
+
+      <h2 class="govuk-heading-m">Adapt your device to meet your needs</h2>
+
+      <p class="govuk-body"><a href="https://mcmw.abilitynet.org.uk/">Read advice from AbilityNet on how to adapt your device to meet your needs</a>. For example, changing the background colour or text size.</p>
+      
+      
+
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Provide contact email address – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorContactEmail %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+    <form action="{{currentUrl}}" method="post">
+
+    <!-- Check for error -->
+    {% if errorContactEmail %}
+      <div class="govuk-form-group govuk-form-group--error">
+    {% else %}
+      <div class="govuk-form-group">
+    {% endif %} 
+        <h1 class="govuk-label-wrapper">
+          <label class="govuk-label govuk-label--l" for="contactEmail">
+            Provide an email address for this application
+          </label>
+        </h1>
+        <div id="contactEmail-hint" class="govuk-hint">
+          We'll use this if we need more information about the application. 
+        </div>
+        <!-- Check for error -->
+      {% if errorContactEmail %}
+        <p id="contactEmail-error" class="govuk-error-message">
+          <span class="govuk-visually-hidden">Error:</span> Enter an email address for this application
+        </p>
+      {% endif %} 
+        <input class="govuk-input" id="contactEmail" name="contactEmail" type="text">
+    </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

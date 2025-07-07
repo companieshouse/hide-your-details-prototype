@@ -1,0 +1,265 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  {{ govukTag({
+    classes: "govuk-tag--blue govuk-!-margin-bottom-4",
+    text: "Version 5"
+  }) }}
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">
+       {{serviceName}}<span class="govuk-caption-xl"></span>
+      </h1>
+
+      <a href="start" role="button" draggable="false" class="govuk-button govuk-button--start" data-module="govuk-button">
+        Start now
+      </a>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h2 class="govuk-heading-l">Prototype data</h2>
+      
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Company number - 12345678 
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Company name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Big Shop ltd
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Active
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <div class="govuk-summary-card">
+        <div class="govuk-summary-card__title-wrapper">
+          <h2 class="govuk-summary-card__title">
+            Company number - 22446688 
+          </h2>
+        </div>
+        <div class="govuk-summary-card__content">
+          <dl class="govuk-summary-list">
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Company name
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Megamart Limited
+              </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                Status
+              </dt>
+              <dd class="govuk-summary-list__value">
+                Dissolved
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m" id="authScreens">Incorporation documents</h2>
+      <ul class="govuk-list govuk-list--bullet">      
+        <li>
+          <a href="../public/images/IN01.pdf" type="application/pdf" target="_blank" class="govuk-link">BIG SHOP LTD Incorporation document - before suppression</a>
+        </li>
+        <li>
+          <a href="../public/images/IN01-suppressed.pdf" type="application/pdf" target="_blank" class="govuk-link">BIG SHOP LTD Incorporation document - after suppression</a>
+        </li>
+      </ul>
+    
+
+      <h2 class="govuk-heading-m" id="authScreens">Individual screen links</h2>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a class="govuk-link" href="start">Start</a>
+        </li>
+        <li>
+          <a class="govuk-link" href="guidance">Guidance</a>
+        </li>    
+        </li>  
+        <li>
+          <a class="govuk-link" href="sign-in">sign-in</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="company-number">Company number</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="confirm-company">Confirm company</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="applicant-details">Applicant's details</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="contact-email">Contact email</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="applicant-status">Applicant's status</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="suppress-list">Suppress list</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="suppress-list-dissolved">Suppress list - dissolved</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="address-lookup">Address lookup</a>
+        </li>  
+        <li>
+          <a class="govuk-link" href="address-confirm">Confirm address</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="address-manual">Address manual</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="is-address-roa">Is address ROA</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="address-roa-stop">You must update ROA first</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="need-replacement-address">Is address correspondence address</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="replacement-address-lookup">Replacement address lookup</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="replacement-address-confirm">Replacement address confirm</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="replacement-address-manual">Replacement address manual</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="select-documents">Select documents</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="select-documents-2">Select documents 2</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="check-answers">Check answers</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="payment-one">Payment summary</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="paymnet-two">Payment</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="paymnet-three">Payment confirm</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="success">Success</a>
+        </li> 
+        <li>
+          <a class="govuk-link" href="accessibility_statement.html">accessibility_statement</a>
+        </li> 
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m" id="authScreens">User research</h2>
+      <ul class="govuk-list govuk-list--bullet">      
+        <li>
+          <a class="govuk-link govuk-link--no-visited-state" target="_blank" href="https://companieshouse.sharepoint.com/sites/ProtectionandSuppressionProject/Shared%20Documents/Forms/AllItems.aspx?csf=1&web=1&e=jjj9Ht&CID=27465672%2De5fe%2D42f3%2Da9ae%2Dbdd9a033e14a&FolderCTID=0x012000C59B19089AB1D24A91585CF7AD936298&id=%2Fsites%2FProtectionandSuppressionProject%2FShared%20Documents%2FSuppression%20%2D%20User%20session%20recordings">Testing videos</a>
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m" id="authScreens">Main changes to the prototype in this version</h2>
+      <ul class="govuk-list govuk-list--bullet">      
+        <li>
+          Changed Content on start page. After day of date of birth '(we'll still show the month and year of birth)' added for clarity content. Same content also added on suppress list page.
+        </li>
+        <li>
+          New content on start page and select documents page -
+
+          'You cannot suppress an address in a document where it's an address subject to a mortgage...'
+           To inform users that they should not select these type of docs on the select docs page
+        </li>
+        <li>
+          New version of the supress list added
+        </li>
+      </ul>
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m" id="authScreens">Journey flow (Including changes)</h2>
+      <ul class="govuk-list govuk-list--bullet">      
+        <li>
+          <a class="govuk-link" target="_blank" href="https://app.mural.co/t/companieshouse8589/m/companieshouse8589/1732700921782/296050e9f9a0df1e0096d42def8f14e8ab2e44f5">Hide your details flow diagram</a>
+        </li>
+      </ul>
+
+
+      <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible govuk-!-margin-bottom-6">
+
+      <h2 class="govuk-heading-m">
+        Linked services
+      </h2>
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th class="govuk-table__header" scope="col">Links</th>
+
+            <th class="govuk-table__header" scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a href="https://chs-prototype-b54692577ef9.herokuapp.com/" target="_blank">Find and update company information</a>
+            </td>
+          
+            <td class="govuk-table__cell">
+              <strong class="govuk-tag govuk-tag--blue">
+                PROTOTYPE
+              </strong>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+
+{% endblock %}

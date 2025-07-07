@@ -1,0 +1,87 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is the company number? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <!-- Check for error -->
+      {% if errorIsAddressRoa %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+      {% endif %}
+
+      <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorIsAddressRoa %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="isAddressRoa-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Is the home address being used as the company's current registered office address?</h1> 
+              <!--{% if data['companyNumber'] == '12345678'  %}
+                BIG SHOP LTD
+              {% else %}
+                MEGAMART LIMITED
+              {% endif %} ?
+            </h1>-->
+          </legend>
+          <p class="govuk-body">
+            You can check this by searching for the company on the <a href="#">Companies House register (opens in a new tab)</a>.
+          </p>
+          <!-- Check for error -->
+          {% if errorIsAddressRoa %}
+          <p id="isAddressRoa-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select yes if the home address is the registered office address
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios govuk-radios--inline" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="isAddressRoa" name="isAddressRoa" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="isAddressRoa">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="isAddressRoa-2" name="isAddressRoa" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="isAddressRoa-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+<!--
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-visually-hidden">Warning</span>
+          If the home address is being used as the company's current registered office address, you must <a href="https://www.gov.uk/government/publications/change-a-registered-office-address-ad01" class="govuk-link govuk-link--no-visited-state" target="_blank">update the registered office address (opens in a new tab)</a> before continuing with this service.
+        </strong>
+      </div>
+    -->
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

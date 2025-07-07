@@ -1,0 +1,180 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Check your answers before sending your application – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company number
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <p class="govuk-body">{{ data['companyNumber'] }} </p>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class=" govuk-link--no-visited-state" href="company-number">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Company name
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['companyNumber'] == '12345678'  %}
+            BIG SHOP LTD
+          {% else %}
+            MEGAMART LIMITED
+          {% endif %} 
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Full name of applicant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['fullName']}} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class=" govuk-link--no-visited-state" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Date of birth of applicant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['dob-day'] }} 
+          {{ data['dob-month'] | displayMonth }} 
+          {{ data['dob-year'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="applicant-details">Change<span class="govuk-visually-hidden"> date of birth</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Former name of applicant
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['differentNameInput'] %}
+            {{ data['differentNameInput'] }}
+          {% else %}
+            None provided
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="applicant-details">Change<span class="govuk-visually-hidden"> name</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Does the applicant still hold an active role in Big Shop Ltd?
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {% if data['applicantStatus'] == 'yes'  %}
+            <p class="govuk-body">Yes </p>
+          {% else %}
+            <p class="govuk-body">No </p>
+          {% endif %} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="applicant-status">Change<span class="govuk-visually-hidden"> contact details</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Email address for this application
+        </dt>
+        <dd class="govuk-summary-list__value">
+          {{ data['contactEmail'] }} 
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="contact-email">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Details to remove from documents
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet">
+            <!--Loop through checked checkboxes-->
+            {% for feature in data['suppressList'] %}
+              <li>{{ feature }}</li>
+            {% endfor %}
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="suppress-list">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+      {% if data['suppressList'] %}
+        {% if data['suppressList'].includes('Home address')  %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Home address to remove from documents
+          </dt>
+          <dd class="govuk-summary-list__value">
+            10 Old Street<br>Parkland<br>Townville<br>England<br>XX1 ZZ2
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link govuk-link--no-visited-state" href="address-lookup">Change<span class="govuk-visually-hidden"> licence type</span></a>
+          </dd>
+        </div>
+        {% endif %} 
+      {% endif %} 
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Replacement correspondence address
+        </dt>
+        <dd class="govuk-summary-list__value">
+        {% if data['needReplacementAddress'] == 'yes'  %}
+          20 New Street<br>Parkland<br>Townville<br>England<br>XX3 WW8
+        {% else %}
+          Not required
+        {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="need-replacement-address">Change<span class="govuk-visually-hidden"> licence type</span></a>
+        </dd>
+      </div>
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">
+          Documents selected 
+        </dt>
+        <dd class="govuk-summary-list__value">
+          <ul class="govuk-list govuk-list--bullet">
+            <li>IN01 - 08 Feb 2022</li>
+          </ul>
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link govuk-link--no-visited-state" href="select-documents">Change<span class="govuk-visually-hidden"> previous application number</span></a>
+        </dd>
+      </div>
+    </dl>
+    
+
+    <form action="{{currentUrl}}" method="post">
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+      
+      </form>
+  </div>
+</div>
+
+
+{% endblock %}

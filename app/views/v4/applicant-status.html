@@ -1,0 +1,74 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What is the applicant's status? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "includes/phase-banner.html" %}
+  {% include "includes/account-banner.html" %}
+  {% include "includes/back-link.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorApplicantStatus %}
+      {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+    <form action="{{currentUrl}}" method="post">
+
+      <!-- Check for error -->
+      {% if errorApplicantStatus %}
+      <div class="govuk-form-group govuk-form-group--error">
+      {% else %}
+      <div class="govuk-form-group">
+      {% endif %} 
+        <fieldset class="govuk-fieldset" aria-describedby="applicantStatus-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              Does the applicant still hold an active role in BIG SHOP LTD?
+            </h1>
+          </legend>
+          <div id="applicantStatus-hint" class="govuk-hint">
+            This is so we know whether to ask you about a replacement address later. 
+          </div>
+          <!-- Check for error -->
+          {% if errorApplicantStatus %}
+          <p id="applicantStatus-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Select if the applicant is still active in the company
+          </p>
+          {% endif %} 
+
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus" name="applicantStatus" type="radio" value="yes">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus">
+                Yes
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="applicantStatus-2" name="applicantStatus" type="radio" value="no">
+              <label class="govuk-label govuk-radios__label" for="applicantStatus-2">
+                No
+              </label>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}
